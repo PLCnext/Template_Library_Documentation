@@ -22,8 +22,7 @@ also work with Visual Studio Code. It offers numerous convenience functions by d
 The HTML5 help works for visible library content only. 
 If you restrict a function block or function in order to protect it agains read-access, the HTML help cannot be opened via the PLCnext Engineer context menu.
 
-![image info](./images/PLCnextEngOpenFbHelp.png)
-
+<img src="./images/PLCnextEngOpenFbHelp.png" alt="drawing" width="400"/>
 
 --------------------------------
 
