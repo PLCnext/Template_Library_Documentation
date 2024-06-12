@@ -1,0 +1,3672 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Lib_Test</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="styles/html_style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lib_Test</h1>
+</header>
+<div class="header">
+
+</div>
+<!-- *** Change company logo here *** -->
+<div class="logo">
+<p><img src="./_images/logo_pxc.png" 
+   align="right"
+   style="margin-right:70px"
+   height="60" 
+   width="auto" ></p>
+</div>
+<nav>
+<!-- *** Create table of contents here *** -->
+<h2 id="contents">CONTENTS</h2>
+<ol type="1">
+<li><a href="#Startpage">Title page</a> </br></li>
+<li><a href="#General_information">General information</a> </br> 2.1. <a
+href="#Supported_PLCnext_Engineer_versions">Supported PLCnext Engineer
+versions</a> </br> 2.2. <a href="#Supported_devices">Supported
+device</a> </br> 2.3. <a href="#Library_description">Library
+description</a> </br> 2.4. <a
+href="#Safety-related_messages">Safety-related danger messages</a>
+</br></li>
+<li><a href="#Installation_hints">Installation hints</a> </br></li>
+<li><a href="#Change_notes">Change notes</a> </br></li>
+<li><a href="#FUs_FBs">Functions and function blocks</a> </br></li>
+<li><a href="#LIBID_My_FU1_1">LIBID_My_FU1_1</a> </br></li>
+<li><a href="#LIBID_My_FB1_1">LIBID_My_FB1_1</a> </br></li>
+<li><a href="#Group_1">Group_1</a> <br> 8.1. <a
+href="#LIBID_My_FB2_1">LIBID_My_FB2_1</a> </br> 8.2. <a
+href="#LIBID_My_FB3_1">LIBID_My_FB3_1</a> </br></li>
+<li><a href="#Appendix">Appendix</a> </br> 9.1. <a
+href="#FW_blocks_diag_codes">Diag codes of used firmware function
+blocks</a> </br> 9.2. <a href="#Data_types">Data types</a> </br> 9.3. <a
+href="#Known_issues">Known issues</a> </br></li>
+<li><a href="#Support">Support</a> </br></li>
+</ol>
+</nav>
+<div class="startpage">
+<!-- *** Change library name here: *** -->
+<h1 id="my_library"><a class="link" name="Startpage">My_Library</a></h1>
+<p>Function block library for PLCnext Engineer</p>
+<p>Documentation for </br> PHOENIX CONTACT function blocks </br></p>
+<!-- *** Change address here: *** -->
+<p>PHOENIX CONTACT GmbH &amp; Co. KG </br> Flachsmarktstrasse 8 </br>
+D-32825 Blomberg, Germany </br></p>
+<p>This documentation is available in English only. </br></p>
+</div>
+<section id="general-information" class="main">
+<h1><a class="link" name="General_information">General
+information</a></h1>
+<p>Help file for the PLCnext Engineer library
+<strong>My_Library</strong> <!-- Change library name --> version
+<strong>1</strong> <!-- Change library version --></p>
+<h2
+id="supported-plcnext-engineer-versions"><a class="link" name="Supported_PLCnext_Engineer_versions">Supported
+PLCnext Engineer versions</a></h2>
+<p>Minimal required version:
+<!-- e.g. PLCnext Engineer 2020.0 LTS --></p>
+<p>Maximum supported version:
+<!-- e.g. PLCnext Engineer 2023.0.1 LTS --></p>
+<h2
+id="supported-devices"><a class="link" name="Supported_devices">Supported
+devices</a></h2>
+<!-- *** Add or change supported controls here: *** -->
+<p>Controller - AXC F 1152 - Order number: 1151412</p>
+<p>Controller - AXC F 2152 - Order number: 2404267</p>
+<h2
+id="library-description"><a class="link" name="Library_description">Library
+description</a></h2>
+<!-- *** Add short description for your library here: *** -->
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+est Lorem ipsum dolor sit amet.</p>
+<div class="pagebreak">
+
+</div>
+<h2
+id="safety-related-danger-messages"><a class="link" name="Safety-related_messages">Safety-related
+danger messages</a></h2>
+<!-- *** You can use the following snippets as templates in your FB/FU documentation *** -->
+<!-- *** But do NOT change content here *** -->
+<p>In accordance with the applicable standards, the following hazard
+messages are used in this documentation.</p>
+<!-- Note box-->
+<div class="noteheadertext">
+Note
+</div>
+<div class="notetext">
+Note texts give you addition information which may be useful when
+working with this library.
+</div>
+<p></br></p>
+<!-- Caution box-->
+<div class="cautionheadertext">
+<img src="./_images/caution_label.gif"> Caution
+</div>
+<div class="notetext">
+A caution text informs you about minor hazard situations which, if not
+avoided, may result in minor or moderate injury.
+</div>
+<p></br></p>
+<!-- Warning box-->
+<div class="warningheadertext">
+<img src="./_images/warning_label.gif"> Warning
+</div>
+<div class="notetext">
+This is a warning text. It informs you about a hazardous situation
+which, if not avoided, could result in death or serious injury.
+</div>
+<p></br></p>
+<!-- Danger box-->
+<div class="dangerheadertext">
+<img src="./_images/danger_label.gif"> Danger
+</div>
+<div class="notetext">
+This text indicates hazardous situation which, if not avoided, will
+result in death or serious injury.
+</div>
+</section>
+<section id="installation-hints" class="main">
+<h1><a class="link" name="Installation_hints">Installation
+hints</a></h1>
+<!-- *** NO need to change content here *** -->
+<p>If you did not specify a different directory during library
+installation all data in the MSI file will be unpacked to</p>
+<p>C:\Users\Public\Documents\Phoenix Contact Libraries\PLCnext Engineer
+</br> (former: PC Worx Engineer)</p>
+<p>Please copy the library data to your PLCnext Engineer (former: PC
+Worx Engineer) working library directory.</p>
+<p>If you did not specify a different directory during PLCnext Engineer
+installation the default PLCnext Engineer working library directory
+is</p>
+<p>C:\Users\Public\Documents\PLCnext Engineer\Libraries </br> (former:
+PC Worx Engineer\Libraries)</p>
+</section>
+<section id="change-notes" class="main">
+<h1><a class="link" name="Change_notes">Change notes</a></h1>
+<!-- *** Change/add version information here: *** -->
+<table>
+<!--- Header - Do NOT change --->
+<tr>
+<th class="border" width="200px">
+Version*
+</th>
+<th class="border" width="400px">
+Information
+</th>
+</tr>
+<!--- Line 1 - Adjust data --->
+<tr>
+<td class="border">
+2.0.0 (2023.0.1 LTS)
+</td>
+<!-- Latest version -->
+<td class="border">
+Change information
+</td>
+<!-- Change information -->
+</tr>
+<!--- Line 2 - Adjust data --->
+<tr>
+<td class="border">
+1.1.0 (2022.0 LTS)
+</td>
+<!-- Version -->
+<td class="border">
+Change information (further functionality)
+</td>
+<!-- Change information -->
+</tr>
+<!--- Line 3 - Adjust data --->
+<tr>
+<td class="border">
+1.0.0 (2022.0 LTS)
+</td>
+<!-- Version -->
+<td class="border">
+Inital release
+</td>
+<!-- Change information -->
+</tr>
+</table>
+<p></br></p>
+<p>* <strong>Format:</strong> Mayor.Minor.Patch (Build/PLCnext Engineer
+version)</p>
+<!-- Use the following version format:
+
+<MAJOR>.<MINOR>.<PATCH> <STATE/BUILD>
+
+The numbers MAJOR, MINOR and PATCH are numbers between 1 and 1000.
+E.g. "1.2.3 alpha" or "43.203.32 (2020.6)".
+
+Please use MAJOR version when you make incompatible API changes.  
+E.g. 3.0.0 is not compatible to 2.4.6.
+
+Increase the MINOR version when you add further functionalities in a backwards compatible manner.
+
+Use the PATCH version for bug fixes.
+
+For STATE/BUILD use the corresponding version of PLCnext Engineer. This way the user knows which PLCnext Engineer version is required. -->
+</section>
+<section id="functions-and-function-blocks" class="main">
+<h1><a class="link" name="FUs_FBs">Functions and function
+blocks</a></h1>
+<!-- *** List and describe functions here ******************************************************** -->
+<!-- *** Delete this chapter if there is no function in your library ***************************** -->
+<h2 id="functions">Functions</h2>
+<!-- *** Function 1: ***************************************************************************** -->
+<div class="block">
+<div class="listheadertext">
+LIBID_My_FU1_1
+</div>
+<!-- FU name syntax: <Lib_ID>_<FU_Name>_<Version> -->
+<div class="listtext">
+<ul>
+<li><strong>Version:</strong> 1.0 <!-- Version --></li>
+<li><strong>Short description:</strong> <!-- Short description --> This
+function can be used …</li>
+<li><strong>Supported artikels:</strong>
+<!-- List of supported articles -->
+<ul>
+<li>AXL F AI2 AO2 1H (2702072)</li>
+<li>AXL F AI2 AO2 XC 1H (1035429)</li>
+</ul></li>
+<li><strong>License:</strong> None
+<!-- License ('None' or 'Required') --></li>
+</ul>
+</div>
+</div>
+<!-- *** Function 2: ****************************************************************************** -->
+<div class="block">
+<div class="listheadertext">
+…
+</div>
+<!-- FU name syntax: <Lib_ID>_<FU_Name>_<Version> -->
+<div class="listtext">
+<ul>
+<li><strong>Version:</strong> … <!-- Version --></li>
+<li><strong>Short description:</strong> …
+<!-- Short description --></li>
+<li><strong>Supported artikels:</strong>
+<!-- List of supported articles -->
+<ul>
+<li>…</li>
+</ul></li>
+<li><strong>License:</strong> …
+<!-- License ('None' or 'Required') --></li>
+</ul>
+</div>
+</div>
+<!-- Naming of functions: 
+    
+Using several libraries within one project can cause problems if they do not have a unique ID. 
+
+Choose a unique library ID and version number for function blocks and functions.
+Insert the library ID before the name, the version number at the end.
+
+Syntax: <Lib_ID>_<FU_Name>_<Version>
+
+Example: PBCL_ConvIEEEToReal_1
+
+<Lib_ID> = PBCL
+<FU_Name> = ConvIEEEToReal
+<Version> = 1
+
+-->
+<!-- *** List and describe function blocks here *********************************************************** -->
+<!-- *** Delete this chapter if there is no function block in your library *******************************  -->
+<h2 id="function-blocks">Function blocks</h2>
+<!-- *** Function block 1 ********************************************************************************* -->
+<div class="block">
+<div class="listheadertext">
+LIBID_My_FB1_1
+</div>
+<!-- FB name syntax: <Lib_ID>_<FB_Name>_<Version> -->
+<div class="listtext">
+<ul>
+<li><strong>Version:</strong> 1.0 <!-- Version --></li>
+<li><strong>Short description:</strong> With this function block …
+<!-- Short description --></li>
+<li><strong>Supported artikels:</strong>
+<!-- List of supported articles -->
+<ul>
+<li>AXL F AI2 AO2 1H (2702072)</li>
+</ul></li>
+<li><strong>License:</strong> None
+<!-- License ('None' or 'Required') --></li>
+</ul>
+</div>
+</div>
+<!-- *** Function block 2 ********************************************************************************* -->
+<div class="block">
+<div class="listheadertext">
+LIBID_My_FB2_1
+</div>
+<!-- FB name syntax: <Lib_ID>_<FB_Name>_<Version> -->
+<div class="listtext">
+<ul>
+<li><strong>Version:</strong> 1.0 <!-- Version --></li>
+<li><strong>Short description:</strong> This function block can be used
+… <!-- Short description --></li>
+<li><strong>Supported artikels:</strong>
+<!-- List of supported articles -->
+<ul>
+<li>HW independend</li>
+</ul></li>
+<li><strong>License:</strong> None
+<!-- License ('None' or 'Required') --></li>
+</ul>
+</div>
+</div>
+<!-- *** Function block 3 ********************************************************************************* -->
+<div class="block">
+<div class="listheadertext">
+LIBID_My_FB3_1
+</div>
+<!-- FB name syntax: <Lib_ID>_<FB_Name>_<Version> -->
+<div class="listtext">
+<ul>
+<li><strong>Version:</strong> 1.0 <!-- Version --></li>
+<li><strong>Short description:</strong> This function block calculates …
+<!-- Short description --></li>
+<li><strong>Supported artikels:</strong>
+<!-- List of supported articles -->
+<ul>
+<li>HW independend</li>
+</ul></li>
+<li><strong>License:</strong> None
+<!-- License ('None' or 'Required') --></li>
+</ul>
+</div>
+</div>
+<!-- *** Function block 4 ********************************************************************************* -->
+<div class="block">
+<div class="listheadertext">
+…
+</div>
+<!-- FB name syntax: <Lib_ID>_<FB_Name>_<Version> -->
+<div class="listtext">
+<ul>
+<li><strong>Version:</strong> … <!-- Version --></li>
+<li><strong>Short description:</strong> …
+<!-- Short description --></li>
+<li><strong>Supported artikels:</strong>
+<!-- List of supported articles -->
+<ul>
+<li>…</li>
+</ul></li>
+<li><strong>License:</strong> …
+<!-- License ('None' or 'Required') --></li>
+</ul>
+</div>
+</div>
+<!-- Naming of function blocks: 
+    
+Using several libraries within one project can cause problems if they do not have a unique ID. 
+
+Choose a unique library ID and version number for function blocks and functions.
+Insert the library ID before the name, the version number at the end.
+
+Syntax: <Lib_ID>_<FB_Name>_<Version>
+
+Example: MB_RTU_Master_5
+
+<Lib_ID> = MB
+<FB_Name> = RTU_Master
+<Version> = 5
+
+-->
+</section>
+<div id="poe" class="main">
+<!-- *** Change FU name here (1st after "name=",  2nd as tag content): **************************************************** -->
+<h1
+id="libid_my_fu1_1"><a class="link" name="LIBID_My_FU1_1">LIBID_My_FU1_1</a></h1>
+<table cellpadding="2" class="column_separator">
+<!-- ************ Section for POU type info (mandatory) ******************************************************************* -->
+<tr>
+<td class="column_separator">
+Type
+</td>
+<td class="column_separator">
+Function
+</td>
+</tr>
+<!-- ************ Section for short description (mandatory) *************************************************************** -->
+<tr>
+<td class="column_separator">
+Description
+</td>
+<td class="column_separator">
+<!-- Add a general function description here: -->
+<p>This function is used to …. </br> The function provides the
+following:</p>
+<ul>
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li><p>…</p></li>
+</ul>
+</td>
+</tr>
+<!-- ************ Section for notes (mandatory) ************************************************************************** -->
+<tr>
+<td class="column_separator">
+Notes
+</td>
+<td class="column_separator">
+<!-- Add notes here: -->
+<ul>
+<li><p>All parameters can be negated. </br></br> <strong>Note:</strong>
+The negation of formal parameters is not supported in safety-related
+code (SNOLD).</p></li>
+<li><p>…</p></li>
+</ul>
+</td>
+</tr>
+<!-- ************ Section for parameters of the function (mandatory) ***************************************************** -->
+<tr>
+<td class="column_separator">
+Parameters
+</td>
+<td class="column_separator">
+<!-- *** Add/change the input parameter descriptions here: *** -->
+<p><strong>Inputs</strong></p>
+<!-- **** Input 1 ************************************ -->
+<details>
+<!-- *** Change name of the input here: *********** -->
+<summary class="before">
+xActivate
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function activation.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Input 2 *** -->
+<details>
+<!-- *** Change name of the input here: *** -->
+<summary class="before">
+xVar1
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Description of parameter xVar1.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Input 3 *** -->
+<details>
+<!-- *** Change name of the input here: *** -->
+<summary class="before">
+xVar2
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Description of parameter xVar2.
+</td>
+</tr>
+</table>
+</details>
+<!-- *** Change the return value type and descriptions here: *** -->
+<p><strong>Output / Return value</strong></p>
+<details>
+<summary class="before">
+OUT
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Description of the return value.
+</td>
+</tr>
+</table>
+</details>
+</td>
+</tr>
+<!-- ************ Section for examples / examplary call(s) of your function (one example mandatory) ********************** -->
+<tr>
+<td class="column_separator">
+Examples
+</td>
+<td class="column_separator">
+<!-- *** Add/Change examples here: *** --><br />
+
+<details>
+<summary class="before">
+Example in ST
+</summary>
+<pre class="example">
+      xResult := LIBID_My_FU1_1(TRUE, xLocalVar1, xLocalVar2);
+      </pre>
+</details>
+<details>
+<summary class="before">
+Example in FBD
+</summary>
+<img src="_images/image.png">
+</details>
+</td>
+</tr>
+<!-- ************ Section for additional information (optional) ********************************************************** -->
+<tr>
+<td class="column_separator">
+Additional Info
+</td>
+<td class="column_separator">
+<details>
+<summary class="before">
+EN/ENO behavior
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+The POU is only executed if TRUE is applied to the EN input. If EN =
+FALSE, the POU is not executed and ENO = FALSE indicates the
+inactivity.</br> If any errors occurs while executing the function, ENO
+is set to FALSE.</br>
+<div class="furtherinfotext">
+Further Info: See PLCnext Engineer documentation &gt; topic “General
+information on execution control with EN/ENO” for further details.
+</div>
+</td>
+</tr>
+</table>
+</details>
+<p><!-- *** If required, add additional information here: *** --></p>
+<ul>
+<li><p>Further additional information</p></li>
+<li><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+aliquyam erat, sed diam voluptua.</p></li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div id="poe" class="main">
+<!-- *** Change FB name here (1st after "name=",  2nd as tag content): **************************************************** -->
+<h1
+id="libid_my_fb1_1"><a class="link" name="LIBID_My_FB1_1">LIBID_My_FB1_1</a></h1>
+<table cellpadding="2" class="column_separator">
+<!-- ************ Section for POU type info (mandatory) ******************************************************************* -->
+<tr>
+<td class="column_separator">
+Type
+</td>
+<td class="column_separator">
+Function block
+</td>
+</tr>
+<!-- ************ Section for short description (mandatory) *************************************************************** -->
+<tr>
+<td class="column_separator">
+Description
+</td>
+<td class="column_separator">
+<!-- Add the block description here. -->
+<p>This function block is used to …. </br> The function block provides
+the following:</p>
+<ul>
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li><p>…</p></li>
+</ul>
+</td>
+</tr>
+<!-- ************ Section for notes (mandatory) ************************************************************************** -->
+<tr>
+<td class="column_separator">
+Notes
+</td>
+<td class="column_separator">
+<!-- Add the block notes here. -->
+<ul>
+<li><p>All parameters can be negated. </br></br> <strong>Note:</strong>
+The negation of formal parameters is not supported in safety-related
+code (SNOLD).</p></li>
+<li><p>Function blocks have to be instantiated. The instance name of the
+function block has to be declared in the ‘Variables’ table of the POU
+where the FB is going to be used. The instance name must be unique
+within the POU.</p></li>
+<li><p>…</p></li>
+</ul>
+</td>
+</tr>
+<!-- ************ Section for parameters of the function block (mandatory) *********************************************** -->
+<tr>
+<td class="column_separator">
+Parameters
+</td>
+<td class="column_separator">
+<!-- *** Add/change the input parameter descriptions here: *** -->
+<p><strong>Inputs</strong></p>
+<!-- **** Input 1 ************************************ -->
+<details>
+<!-- *** Mandatory input ************************** -->
+<summary class="before">
+xActivate
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function block activation .
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Input 2 ************************************ -->
+<details>
+<!-- *** Change name of the input here: *********** -->
+<summary class="before">
+bVar1
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BYTE
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Description of parameter xVar1.
+</td>
+</tr>
+</table>
+</details>
+<!-- *** Add/change the output parameter descriptions here: *** -->
+<p><strong>Outputs</strong></p>
+<!-- **** Output 1 ************************************ -->
+<details>
+<!-- *** Mandatory output ************************* -->
+<summary class="before">
+xActive
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function block active status.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 2 ************************************ -->
+<details>
+<!-- *** Mandatory output ************************* -->
+<summary class="before">
+xError
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function block error status.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 3 ************************************ -->
+<details>
+<!-- *** Mandatory output ************************* -->
+<summary class="before">
+wDiagCode
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+WORD
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Diagnosis code. See “Error codes” section for further information.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 4 ************************************ -->
+<details>
+<!-- *** Change name of the output here: *********** -->
+<summary class="before">
+wAddDiagCode
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+WORD
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Additional diagnosis code. See “Error codes” section for further
+information.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 5 ************************************ -->
+<details>
+<!-- *** Change name of the output here: *********** -->
+<summary class="before">
+rResult
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+REAL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Description of parameter rResult.
+</td>
+</tr>
+</table>
+</details>
+</td>
+</tr>
+<!-- ************ Section for diagnostic codes (mandatory) *************************************************************** -->
+<tr>
+<td class="column_separator">
+Error codes
+</td>
+<td class="column_separator">
+<!-- Add/Change diagnostic code information here (Template for tables with wDiagCode only)  -->
+<details>
+<summary class="before">
+Error codes for wDiagCode
+</summary>
+<table cellpadding="2" class="border">
+<tr>
+<th class="border">
+wDiagCode
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#0000
+</td>
+<!-- Diag code -->
+<td class="border">
+Function block is deactivated.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#8000
+</td>
+<!-- Diag code -->
+<td class="border">
+Function block is in regular operation.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+…
+</td>
+<!-- Diag code -->
+<td class="border">
+…
+</td>
+<!-- Description -->
+</tr>
+</table>
+</details>
+<!-- Add/Change diagnostic code information here (Template for tables with wDiagCode and wAddDiagCode) -->
+<details>
+<summary class="before">
+Error codes for wDiagCode and wAddDiagCode
+</summary>
+<table cellpadding="2" class="border">
+<tr>
+<th class="border">
+wDiagCode
+</th>
+<th class="border">
+wAddDiagCode
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#0000
+</td>
+<!-- wDiagCode  -->
+<td class="border">
+16#0000
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+Function block is deactivated.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#8000
+</td>
+<!-- wDiagCode  -->
+<td class="border">
+16#0000
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+Function block is in regular operation.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#C110
+</td>
+<!-- wDiagCode -->
+<td class="border">
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+An invalid input parameter has been detected.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#C520
+</td>
+<!-- wDiagCode -->
+<td class="border">
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+Error in an internal used function block.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+…
+</td>
+<!-- wDiagCode -->
+<td class="border">
+…
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+…
+</td>
+<!-- Description -->
+</tr>
+</table>
+</details>
+</td>
+</tr>
+<!-- ************ Section for examples / examplary call(s) of your function (one example mandatory) ********************** -->
+<tr>
+<td class="column_separator">
+Examples
+</td>
+<td class="column_separator">
+<!-- Add/Change examples here --><br />
+
+<details>
+<summary class="before">
+Example in ST
+</summary>
+<pre class="example">
+      LIBID_My_FB1_1_11(TRUE, BYTE#2#0010_0111);
+      G_rResult := LIBID_My_FB1_1_11.rResult;
+      </pre>
+</details>
+<details>
+<summary class="before">
+Example in FBD
+</summary>
+<img src="_images/image.png">
+</details>
+</td>
+</tr>
+<!-- ************ Section for additional information (optional) ********************************************************** -->
+<tr>
+<td class="column_separator">
+Additional Info
+</td>
+<td class="column_separator">
+<p><!-- Add additional information here. --><br />
+My additional information</p>
+</td>
+</tr>
+</table>
+</div>
+<section id="group-1" class="main">
+<h1><a class="link" name="Group_1">Group 1</a></h1>
+<p>In this group you can find function blocks for …
+<!-- e.g. communication establishment --></p>
+<!-- *** List all function blocks (and/or functions) of this group *** -->
+<p><strong>List of function blocks</strong>:</p>
+<ul>
+<li><p>FB_2</p></li>
+<li><p>FB_3</p></li>
+</ul>
+</section>
+<div id="poe" class="main">
+<!-- *** Change FB name here (1st after "name=",  2nd as tag content): **************************************************** -->
+<h1
+id="libid_my_fb2_1"><a class="link" name="LIBID_My_FB2_1">LIBID_My_FB2_1</a></h1>
+<table cellpadding="2" class="column_separator">
+<!-- ************ Section for POU type info (mandatory) ******************************************************************* -->
+<tr>
+<td class="column_separator">
+Type
+</td>
+<td class="column_separator">
+Function block
+</td>
+</tr>
+<!-- ************ Section for short description (mandatory) *************************************************************** -->
+<tr>
+<td class="column_separator">
+Description
+</td>
+<td class="column_separator">
+<!-- Add the block description here. -->
+<p>This function block is used to …. </br> The function block provides
+the following:</p>
+<ul>
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li><p>…</p></li>
+</ul>
+</td>
+</tr>
+<!-- ************ Section for notes (mandatory) ************************************************************************** -->
+<tr>
+<td class="column_separator">
+Notes
+</td>
+<td class="column_separator">
+<!-- Add the block notes here. -->
+<ul>
+<li><p>All parameters can be negated. </br></br> <strong>Note:</strong>
+The negation of formal parameters is not supported in safety-related
+code (SNOLD).</p></li>
+<li><p>Function blocks have to be instantiated. The instance name of the
+function block has to be declared in the ‘Variables’ table of the POU
+where the FB is going to be used. The instance name must be unique
+within the POU.</p></li>
+<li><p>…</p></li>
+</ul>
+</td>
+</tr>
+<!-- ************ Section for parameters of the function block (mandatory) *********************************************** -->
+<tr>
+<td class="column_separator">
+Parameters
+</td>
+<td class="column_separator">
+<!-- *** Add/change the input parameter descriptions here: *** -->
+<p><strong>Inputs</strong></p>
+<!-- **** Input 1 ************************************ -->
+<details>
+<!-- *** Mandatory input ************************** -->
+<summary class="before">
+xActivate
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function block activation .
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Input 2 ************************************ -->
+<details>
+<!-- *** Change name of the input here: *********** -->
+<summary class="before">
+bVar1
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BYTE
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Description of parameter xVar1.
+</td>
+</tr>
+</table>
+</details>
+<!-- *** Add/change the output parameter descriptions here: *** -->
+<p><strong>Outputs</strong></p>
+<!-- **** Output 1 ************************************ -->
+<details>
+<!-- *** Mandatory output ************************* -->
+<summary class="before">
+xActive
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function block active status.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 2 ************************************ -->
+<details>
+<!-- *** Mandatory output ************************* -->
+<summary class="before">
+xError
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function block error status.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 3 ************************************ -->
+<details>
+<!-- *** Mandatory output ************************* -->
+<summary class="before">
+wDiagCode
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+WORD
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Diagnosis code. See “Error codes” section for further information.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 4 ************************************ -->
+<details>
+<!-- *** Change name of the output here: *********** -->
+<summary class="before">
+wAddDiagCode
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+WORD
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Additional diagnosis code. See “Error codes” section for further
+information.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 5 ************************************ -->
+<details>
+<!-- *** Change name of the output here: *********** -->
+<summary class="before">
+rResult
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+REAL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Description of parameter rResult.
+</td>
+</tr>
+</table>
+</details>
+</td>
+</tr>
+<!-- ************ Section for diagnostic codes (mandatory) *************************************************************** -->
+<tr>
+<td class="column_separator">
+Error codes
+</td>
+<td class="column_separator">
+<!-- Add/Change diagnostic code information here (Template for tables with wDiagCode only)  -->
+<details>
+<summary class="before">
+Error codes for wDiagCode
+</summary>
+<table cellpadding="2" class="border">
+<tr>
+<th class="border">
+wDiagCode
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#0000
+</td>
+<!-- Diag code -->
+<td class="border">
+Function block is deactivated.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#8000
+</td>
+<!-- Diag code -->
+<td class="border">
+Function block is in regular operation.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+…
+</td>
+<!-- Diag code -->
+<td class="border">
+…
+</td>
+<!-- Description -->
+</tr>
+</table>
+</details>
+<!-- Add/Change diagnostic code information here (Template for tables with wDiagCode and wAddDiagCode) -->
+<details>
+<summary class="before">
+Error codes for wDiagCode and wAddDiagCode
+</summary>
+<table cellpadding="2" class="border">
+<tr>
+<th class="border">
+wDiagCode
+</th>
+<th class="border">
+wAddDiagCode
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#0000
+</td>
+<!-- wDiagCode  -->
+<td class="border">
+16#0000
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+Function block is deactivated.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#8000
+</td>
+<!-- wDiagCode  -->
+<td class="border">
+16#0000
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+Function block is in regular operation.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#C110
+</td>
+<!-- wDiagCode -->
+<td class="border">
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+An invalid input parameter has been detected.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#C520
+</td>
+<!-- wDiagCode -->
+<td class="border">
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+Error in an internal used function block.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+…
+</td>
+<!-- wDiagCode -->
+<td class="border">
+…
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+…
+</td>
+<!-- Description -->
+</tr>
+</table>
+</details>
+</td>
+</tr>
+<!-- ************ Section for examples / examplary call(s) of your function (one example mandatory) ********************** -->
+<tr>
+<td class="column_separator">
+Examples
+</td>
+<td class="column_separator">
+<!-- Add/Change examples here --><br />
+
+<details>
+<summary class="before">
+Example in ST
+</summary>
+<pre class="example">
+      LIBID_My_FB1_1_11(TRUE, BYTE#2#0010_0111);
+      G_rResult := LIBID_My_FB1_1_11.rResult;
+      </pre>
+</details>
+<details>
+<summary class="before">
+Example in FBD
+</summary>
+<img src="_images/image.png">
+</details>
+</td>
+</tr>
+<!-- ************ Section for additional information (optional) ********************************************************** -->
+<tr>
+<td class="column_separator">
+Additional Info
+</td>
+<td class="column_separator">
+<p><!-- Add additional information here. --><br />
+My additional information</p>
+</td>
+</tr>
+</table>
+</div>
+<div id="poe" class="main">
+<!-- *** Change FB name here (1st after "name=",  2nd as tag content): **************************************************** -->
+<h1
+id="libid_my_fb3_1"><a class="link" name="LIBID_My_FB3_1">LIBID_My_FB3_1</a></h1>
+<table cellpadding="2" class="column_separator">
+<!-- ************ Section for POU type info (mandatory) ******************************************************************* -->
+<tr>
+<td class="column_separator">
+Type
+</td>
+<td class="column_separator">
+Function block
+</td>
+</tr>
+<!-- ************ Section for short description (mandatory) *************************************************************** -->
+<tr>
+<td class="column_separator">
+Description
+</td>
+<td class="column_separator">
+<!-- Add the block description here. -->
+<p>This function block is used to …. </br> The function block provides
+the following:</p>
+<ul>
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li><p>…</p></li>
+</ul>
+</td>
+</tr>
+<!-- ************ Section for notes (mandatory) ************************************************************************** -->
+<tr>
+<td class="column_separator">
+Notes
+</td>
+<td class="column_separator">
+<!-- Add the block notes here. -->
+<ul>
+<li><p>All parameters can be negated. </br></br> <strong>Note:</strong>
+The negation of formal parameters is not supported in safety-related
+code (SNOLD).</p></li>
+<li><p>Function blocks have to be instantiated. The instance name of the
+function block has to be declared in the ‘Variables’ table of the POU
+where the FB is going to be used. The instance name must be unique
+within the POU.</p></li>
+<li><p>…</p></li>
+</ul>
+</td>
+</tr>
+<!-- ************ Section for parameters of the function block (mandatory) *********************************************** -->
+<tr>
+<td class="column_separator">
+Parameters
+</td>
+<td class="column_separator">
+<!-- *** Add/change the input parameter descriptions here: *** -->
+<p><strong>Inputs</strong></p>
+<!-- **** Input 1 ************************************ -->
+<details>
+<!-- *** Mandatory input ************************** -->
+<summary class="before">
+xActivate
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function block activation .
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Input 2 ************************************ -->
+<details>
+<!-- *** Change name of the input here: *********** -->
+<summary class="before">
+bVar1
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BYTE
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Description of parameter xVar1.
+</td>
+</tr>
+</table>
+</details>
+<!-- *** Add/change the output parameter descriptions here: *** -->
+<p><strong>Outputs</strong></p>
+<!-- **** Output 1 ************************************ -->
+<details>
+<!-- *** Mandatory output ************************* -->
+<summary class="before">
+xActive
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function block active status.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 2 ************************************ -->
+<details>
+<!-- *** Mandatory output ************************* -->
+<summary class="before">
+xError
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+BOOL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Function block error status.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 3 ************************************ -->
+<details>
+<!-- *** Mandatory output ************************* -->
+<summary class="before">
+wDiagCode
+</summary>
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+WORD
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Diagnosis code. See “Error codes” section for further information.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 4 ************************************ -->
+<details>
+<!-- *** Change name of the output here: *********** -->
+<summary class="before">
+wAddDiagCode
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+WORD
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Additional diagnosis code. See “Error codes” section for further
+information.
+</td>
+</tr>
+</table>
+</details>
+<!-- **** Output 5 ************************************ -->
+<details>
+<!-- *** Change name of the output here: *********** -->
+<summary class="before">
+rResult
+</summary>
+<!-- *** Change data type and description here: *** -->
+<table cellpadding="2" class="no_border">
+<tr>
+<td class="no_border">
+Data type:
+</td>
+<td class="no_border">
+REAL
+</td>
+</tr>
+<tr>
+<td class="no_border">
+Description:
+</td>
+<td class="no_border">
+Description of parameter rResult.
+</td>
+</tr>
+</table>
+</details>
+</td>
+</tr>
+<!-- ************ Section for diagnostic codes (mandatory) *************************************************************** -->
+<tr>
+<td class="column_separator">
+Error codes
+</td>
+<td class="column_separator">
+<!-- Add/Change diagnostic code information here (Template for tables with wDiagCode only)  -->
+<details>
+<summary class="before">
+Error codes for wDiagCode
+</summary>
+<table cellpadding="2" class="border">
+<tr>
+<th class="border">
+wDiagCode
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#0000
+</td>
+<!-- Diag code -->
+<td class="border">
+Function block is deactivated.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#8000
+</td>
+<!-- Diag code -->
+<td class="border">
+Function block is in regular operation.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+…
+</td>
+<!-- Diag code -->
+<td class="border">
+…
+</td>
+<!-- Description -->
+</tr>
+</table>
+</details>
+<!-- Add/Change diagnostic code information here (Template for tables with wDiagCode and wAddDiagCode) -->
+<details>
+<summary class="before">
+Error codes for wDiagCode and wAddDiagCode
+</summary>
+<table cellpadding="2" class="border">
+<tr>
+<th class="border">
+wDiagCode
+</th>
+<th class="border">
+wAddDiagCode
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#0000
+</td>
+<!-- wDiagCode  -->
+<td class="border">
+16#0000
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+Function block is deactivated.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#8000
+</td>
+<!-- wDiagCode  -->
+<td class="border">
+16#0000
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+Function block is in regular operation.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#C110
+</td>
+<!-- wDiagCode -->
+<td class="border">
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+An invalid input parameter has been detected.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+16#C520
+</td>
+<!-- wDiagCode -->
+<td class="border">
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+Error in an internal used function block.
+</td>
+<!-- Description -->
+</tr>
+<tr>
+<td class="border">
+…
+</td>
+<!-- wDiagCode -->
+<td class="border">
+…
+</td>
+<!-- wAddDiagCode -->
+<td class="border">
+…
+</td>
+<!-- Description -->
+</tr>
+</table>
+</details>
+</td>
+</tr>
+<!-- ************ Section for examples / examplary call(s) of your function (one example mandatory) ********************** -->
+<tr>
+<td class="column_separator">
+Examples
+</td>
+<td class="column_separator">
+<!-- Add/Change examples here --><br />
+
+<details>
+<summary class="before">
+Example in ST
+</summary>
+<pre class="example">
+      LIBID_My_FB1_1_11(TRUE, BYTE#2#0010_0111);
+      G_rResult := LIBID_My_FB1_1_11.rResult;
+      </pre>
+</details>
+<details>
+<summary class="before">
+Example in FBD
+</summary>
+<img src="_images/image.png">
+</details>
+</td>
+</tr>
+<!-- ************ Section for additional information (optional) ********************************************************** -->
+<tr>
+<td class="column_separator">
+Additional Info
+</td>
+<td class="column_separator">
+<p><!-- Add additional information here. --><br />
+My additional information</p>
+</td>
+</tr>
+</table>
+</div>
+<!-- Do not change something in this file -->
+<script>
+    var poe = document.querySelectorAll("#poe > h1, #poe > h2");
+ 
+    if (poe.length > 0)
+    {
+       if (!document.location.hash)
+       {
+          let headerTitle = poe[poe.length - 1].textContent;
+          headerTitle = headerTitle.substring(0, headerTitle.length);
+          document.location.hash = headerTitle; 
+       }
+    }
+</script>
+<div class="main">
+
+<h1 id="appendix"><a class="link" name="Appendix">Appendix</a></h1>
+<h2
+id="diag-codes-of-used-firmware-function-blocks"><a class="link" name="FW_blocks_diag_codes">Diag
+codes of used firmware function blocks</a></h2>
+<!-- *** Keep this chapter, if PDI_READ is used in your library *************** -->
+<!-- *** Delete this table chapter, if PDI_READ is not used in your library *** -->
+<div class="block">
+
+<h3 id="pdi_read">PDI_READ</h3>
+<p>for PLCnext Engineer</p>
+<p>ERROR = TRUE</p>
+<table>
+<tr>
+<th class="border">
+STATUS[0]
+</th>
+<th class="border">
+STATUS[1]
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#09B0
+</td>
+<td class="border">
+16#000C
+</td>
+<td class="border">
+The variable connected to RD_1 is invalid (no array or invalid array
+type).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#09B0
+</td>
+<td class="border">
+16#000B
+</td>
+<td class="border">
+The array connected to RD_1 is too small to save the requested receive
+data.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#09B0
+</td>
+<td class="border">
+16#000E
+</td>
+<td class="border">
+Timeout. No response to the sent PDI READ request received.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#09B0
+</td>
+<td class="border">
+16#000F
+</td>
+<td class="border">
+An internal error has occurred.
+</td>
+</table>
+<p>When receiving a negative confirmation as response to a PDI_READ
+request, the Axioline module directly copies the received error code
+(Error_Code and Add_Info) to STATUS[0] or STATUS[1]. These error codes
+are module-specific. For a description see the respective module
+documentation.</p>
+</div>
+<!-- *** Keep this chapter, if PDI_WRITE is used in your library *************** -->
+<!-- *** Delete this table chapter, if PDI_WRITE is not used in your library *** -->
+<div class="block">
+
+<h3 id="pdi_write">PDI_WRITE</h3>
+<p>for PLCnext Engineer</p>
+<p>ERROR = TRUE</p>
+<table>
+<tr>
+<th class="border">
+STATUS[0]
+</th>
+<th class="border">
+STATUS[1]
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#09B0
+</td>
+<td class="border">
+16#000A
+</td>
+<td class="border">
+The variable connected to SD_1 is invalid (no array or invalid array
+type). connected to SD_1, greater than the maximum allowed length (245
+bytes) or equal to zero.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#09B0
+</td>
+<td class="border">
+16#0009
+</td>
+<td class="border">
+Invalid value at DATA_CNT input. The value is either greater than the
+array
+</td>
+</tr>
+<tr>
+<td class="border">
+16#09B0
+</td>
+<td class="border">
+16#000E
+</td>
+<td class="border">
+Timeout. No response to the sent PDI WRITE request received.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#09B0
+</td>
+<td class="border">
+16#000F
+</td>
+<td class="border">
+An internal error has occurred.
+</td>
+</table>
+<p>When receiving a negative confirmation as response to a PDI_WRITE
+request, the Axioline module directly copies the received error code
+(Error_Code and Add_Info) to STATUS[0] or STATUS[1]. These error codes
+are module-specific. For a description see the respective module
+documentation.</p>
+</div>
+<!-- *** Keep this chapter, if RDREC is used in your library ********* -->
+<!-- *** Delete this chapter, if RDREC is not used in your library *** -->
+<section id="rdrec" class="block">
+<h3>RDREC</h3>
+<p>for PLCnext Engineer</p>
+<table>
+<tr>
+<th class="border">
+Error code
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#0000
+</td>
+<td class="border">
+No error occurred.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F001
+</td>
+<td class="border">
+Too many instances used.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F002
+</td>
+<td class="border">
+Error during initialization of the function block.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F003
+</td>
+<td class="border">
+Invalid ID.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F004
+</td>
+<td class="border">
+Invalid HANDLE/ID.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F005
+</td>
+<td class="border">
+Resources conflict.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F006
+</td>
+<td class="border">
+A function block internal task could not be generated.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F007
+</td>
+<td class="border">
+Too many instances used.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F008
+</td>
+<td class="border">
+Invalid type of a parameter.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F009
+</td>
+<td class="border">
+Invalid parameter value.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00A
+</td>
+<td class="border">
+Unallowed parameter.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00B
+</td>
+<td class="border">
+Invalid length specified.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00C
+</td>
+<td class="border">
+ID could not be created (too many IDs).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00D
+</td>
+<td class="border">
+No entry found that matches the specified ID.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00F
+</td>
+<td class="border">
+No further entries found.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F010
+</td>
+<td class="border">
+Entry in use.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F011
+</td>
+<td class="border">
+Alarm acknowledgement could not be done.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F012
+</td>
+<td class="border">
+Error reading the AR parameters (1st time).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F013
+</td>
+<td class="border">
+Negative acknowledgement received for the execution of a PROFINET
+service.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F014
+</td>
+<td class="border">
+Invalid length for parameter LEN/MLEN or/and RECORD data record too
+short.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F015
+</td>
+<td class="border">
+The service used to read the RECORD data record could not be run.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F016
+</td>
+<td class="border">
+The service used to write the RECORD data record could not be run.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F017
+</td>
+<td class="border">
+Service acknowledgement not received.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F018
+</td>
+<td class="border">
+Invalid INDEX used to access the RECORD data record of the IO device,
+for example, INDEX greater than 16#7FFF.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F019
+</td>
+<td class="border">
+Unknown command code.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01A
+</td>
+<td class="border">
+Error starting the Application Relation (AR).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01B
+</td>
+<td class="border">
+Error stopping the Application Relation (AR).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01C
+</td>
+<td class="border">
+Notification of stopped Application Relation (AR) failed.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01D
+</td>
+<td class="border">
+Setting the “Drive BF” flag failed.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01E
+</td>
+<td class="border">
+Error reading the AR parameters (2nd time).
+</td>
+</tr>
+</table>
+</section>
+<!-- *** Keep this chapter, if RDREC is used in your library ********* -->
+<!-- *** Delete this chapter, if RDREC is not used in your library *** -->
+<section id="wrrec" class="block">
+<h3>WRREC</h3>
+<p>for PLCnext Engineer</p>
+<table>
+<tr>
+<th class="border">
+Error code
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#0000
+</td>
+<td class="border">
+No error occurred.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F001
+</td>
+<td class="border">
+Too many instances used.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F002
+</td>
+<td class="border">
+Error during initialization of the function block.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F003
+</td>
+<td class="border">
+Invalid ID.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F004
+</td>
+<td class="border">
+Invalid HANDLE/ID.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F005
+</td>
+<td class="border">
+Resources conflict.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F006
+</td>
+<td class="border">
+A function block internal task could not be generated.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F007
+</td>
+<td class="border">
+Too many instances used.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F008
+</td>
+<td class="border">
+Invalid type of a parameter.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F009
+</td>
+<td class="border">
+Invalid parameter value.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00A
+</td>
+<td class="border">
+Unallowed parameter.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00B
+</td>
+<td class="border">
+Invalid length specified.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00C
+</td>
+<td class="border">
+ID could not be created (too many IDs).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00D
+</td>
+<td class="border">
+No entry found that matches the specified ID.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F00F
+</td>
+<td class="border">
+No further entries found.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F010
+</td>
+<td class="border">
+Entry in use.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F011
+</td>
+<td class="border">
+Alarm acknowledgement could not be done.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F012
+</td>
+<td class="border">
+Error reading the AR parameters (1st time).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F013
+</td>
+<td class="border">
+Negative acknowledgement received for the execution of a PROFINET
+service.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F014
+</td>
+<td class="border">
+Invalid length for parameter LEN/MLEN or/and RECORD data record too
+short.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F015
+</td>
+<td class="border">
+The service used to read the RECORD data record could not be run.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F016
+</td>
+<td class="border">
+The service used to write the RECORD data record could not be run.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F017
+</td>
+<td class="border">
+Service acknowledgement not received.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F018
+</td>
+<td class="border">
+Invalid INDEX used to access the RECORD data record of the IO device,
+for example, INDEX greater than 16#7FFF.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F019
+</td>
+<td class="border">
+Unknown command code.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01A
+</td>
+<td class="border">
+Error starting the Application Relation (AR).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01B
+</td>
+<td class="border">
+Error stopping the Application Relation (AR).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01C
+</td>
+<td class="border">
+Notification of stopped Application Relation (AR) failed.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01D
+</td>
+<td class="border">
+Setting the “Drive BF” flag failed.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#F01E
+</td>
+<td class="border">
+Error reading the AR parameters (2nd time).
+</td>
+</tr>
+</table>
+</section>
+<!-- *** Keep this chapter, if TCP/UDP blocks are used in your library ******* -->
+<!-- *** Delete this chapter, if no TCP/UDP block is  used in your library *** -->
+<section id="tcp_socket-tcp_read-tcp_write-udp_socketudp_read-udp_write"
+class="block">
+<h3>TCP_SOCKET, TCP_READ, TCP_WRITE, UDP_SOCKET,UDP_READ, UDP_WRITE</h3>
+<p>ERROR = FALSE</p>
+<table>
+<tr>
+<th class="border">
+Error code
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+16#0000
+</td>
+<td class="border">
+Situation is normal (no error).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#8000
+</td>
+<td class="border">
+Socket is trying to connect the partner.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#8001
+</td>
+<td class="border">
+Server is listening for a client.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#8002
+</td>
+<td class="border">
+Server has rejected a client because the IP address and port number do
+not match.
+</td>
+</tr>
+<tr>
+<td class="border">
+16#8003
+</td>
+<td class="border">
+Not all data could be sent. Remaining data will be sent in the next
+cycle(s).
+</td>
+</tr>
+<tr>
+<td class="border">
+16#8004
+</td>
+<td class="border">
+Not all data received: Received length &lt; Expected length
+</td>
+</tr>
+</table>
+</section>
+<div class="block">
+
+<p>ERROR = TRUE</p>
+<table>
+<tr>
+<th class="border">
+Error code
+</th>
+<th class="border">
+Meaning
+</th>
+<th class="border">
+Error only for
+</th>
+</tr>
+<tr>
+<td class="border">
+16#C001
+</td>
+<td class="border">
+Socket creation failed.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C002
+</td>
+<td class="border">
+IP has wrong format.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C003
+</td>
+<td class="border">
+Memory allocation failed.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C100
+</td>
+<td class="border">
+Unexpected error during connecting of a client to a server.
+</td>
+<td class="border">
+TCP/TLS_SOCKET
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C101
+</td>
+<td class="border">
+Unexpected error during receive operation.
+</td>
+<td class="border">
+UDP/TCP/TLS_RECEIVE
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C102
+</td>
+<td class="border">
+Unexpected error during send operation.
+</td>
+<td class="border">
+UDP/TCP/TLS_SEND
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C103
+</td>
+<td class="border">
+Unexpected error during bind operation.
+</td>
+<td class="border">
+UDP_SOCKET
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C104
+</td>
+<td class="border">
+Unexpected error during listen operation.
+</td>
+<td class="border">
+TCP/TLS_SOCKET
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C105
+</td>
+<td class="border">
+Unexpected error during accept operation.
+</td>
+<td class="border">
+TCP/TLS_SOCKET
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C150
+</td>
+<td class="border">
+<p>The TLS parameterization of the TLS_SEND/TLS_RECEIVE function blocks
+is inconsistent with the TLS_SOCKET function block. This is the case
+when:</br></p>
+<ul>
+<li>TLS_SEND/TLS_RECEIVE require secure transmission/reception of data
+(SEND_SECURE/RECEIVE_SECURE input = TRUE), but the socket is not yet
+initialized for TLS communication (START_TLS input of TLS_SOCKET is
+FALSE).</li>
+<li>TLS_SEND/TLS_RECEIVE require insecure transmission/reception of data
+(SEND_SECURE/RECEIVE_SECURE input = FALSE), but the socket is already
+initialized for TLS communication (START_TLS input of TLS_SOCKET is
+TRUE).
+</td>
+<td class="border">
+TLS_*
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C151
+</td>
+<td class="border">
+An error regarding the START_TLS input of the TLS_SOCKET function block
+has occurred. START_TLS was set from TRUE to FALSE during opened TLS
+socket (ACTIVE input = TRUE).
+</td>
+<td class="border">
+TLS_SOCKET
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C201
+</td>
+<td class="border">
+There are too many open sockets in the underlying socket provider.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C202
+</td>
+<td class="border">
+An operation on a nonblocking socket cannot be completed immediately.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C204
+</td>
+<td class="border">
+The datagram is too long.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C205
+</td>
+<td class="border">
+Only one use of an address is normally permitted. </br> In case of a TCP
+or TLS connection, this error code can be emitted when a rising edge is
+detected at the ACTIVATE input while the ACTIVE and BUSY outputs both
+are still not FALSE (i.e., a new connection is requested while the
+previous socket termination is not yet completed). The error also occurs
+if the controller is switched to STOP and afterwards to the RUN state as
+this terminates established connections. </br> This error is also
+emitted if a TCP/TLS server shall listen to several clients. To avoid
+this error use the newer FB generation TLS_*_2.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C206
+</td>
+<td class="border">
+The selected IP address is not valid in this context.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C207
+</td>
+<td class="border">
+The connection was aborted by the .NET Framework or the underlying
+socket provider.
+</td>
+<td class="border">
+</td>
+</tr>
+</tr>
+<tr>
+<td class="border">
+16#C208
+</td>
+<td class="border">
+The connection was reset by the remote peer.
+</td>
+<td class="border">
+</td>
+</tr>
+</tr>
+<tr>
+<td class="border">
+16#C210
+</td>
+<td class="border">
+The application tried to send or receive data, and the socket is not
+connected.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C211
+</td>
+<td class="border">
+No such host is known. The name is not an official host name or alias.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C212
+</td>
+<td class="border">
+An internal error occurred with unclear reason. On controllers up to
+firmware 2019.3 one cause for this error is an empty CipherList. </br>
+Another known cause is trying to send a UDP datagram to a broadcast
+address (255.255.255.255) using the UDP_SEND or UDP_SEND_2 function
+block. </br></br> In case the error is thrown for the UDP_SEND_2 FB,
+ensure that the gateway in your IP configuration is set to a valid
+address (address 0.0.0.0 is invalid and treated as a missing gateway).
+(It is not required that the network contains a device with the
+configured gateway address.)
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C213
+</td>
+<td class="border">
+The remote host is actively refusing a connection. The service is not
+available on the remote host.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C214
+</td>
+<td class="border">
+<ul>
+<li>Parameters like CipherList, TrustStoreName and IdentityStoreName are
+invalid or missing. </br></li>
+<li>An invalid port number was specified.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C215
+</td>
+<td class="border">
+A blocking operation is in progress.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C216
+</td>
+<td class="border">
+The overlapped operation was aborted due to the closure of the
+System.Net.Sockets.Socket.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C217
+</td>
+<td class="border">
+The application has initiated an overlapped operation that cannot be
+completed immediately.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C218
+</td>
+<td class="border">
+A blocking System.Net.Sockets.Socket call was canceled.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C219
+</td>
+<td class="border">
+An attempt was made to access a System.Net.Sockets.Socket in a way that
+is forbidden by its access permissions.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C21A
+</td>
+<td class="border">
+An invalid pointer address was detected by the underlying socket
+provider.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C21B
+</td>
+<td class="border">
+A System.Net.Sockets.Socket operation was attempted on a non-socket.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C21C
+</td>
+<td class="border">
+A required address was omitted from an operation on a
+System.Net.Sockets.Socket.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C21D
+</td>
+<td class="border">
+An unknown, invalid, or unsupported option or level was used with a
+System.Net.Sockets.Socket.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C21E
+</td>
+<td class="border">
+The protocol type is incorrect for this System.Net.Sockets.Socket.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C21F
+</td>
+<td class="border">
+The protocol is not implemented or has not been configured.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C220
+</td>
+<td class="border">
+The support for the specified socket type does not exist in this address
+family.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C221
+</td>
+<td class="border">
+The address family is not supported by the protocol family.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C222
+</td>
+<td class="border">
+The protocol family is not implemented or has not been configured.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C223
+</td>
+<td class="border">
+The address family specified is not supported. This error is returned if
+the IPv6 address family was specified and the IPv6 stack is not
+installed on the local machine. This error is returned if the IPv4
+address family was specified and the IPv4 stack is not installed on the
+local machine.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C224
+</td>
+<td class="border">
+Network is down.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C225
+</td>
+<td class="border">
+Network unreachable.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C226
+</td>
+<td class="border">
+Network dropped connection on reset.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C227
+</td>
+<td class="border">
+No free buffer space is available for a System.Net.Sockets.Socket
+operation.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C228
+</td>
+<td class="border">
+A request to send or receive data was disallowed because the Socket has
+already been closed.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C229
+</td>
+<td class="border">
+The connection attempt timed out, or the connected host has failed to
+respond.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C22A
+</td>
+<td class="border">
+The operation failed because the remote host is down.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C22B
+</td>
+<td class="border">
+There is no network route to the specified host. Could not connect to
+DEST_IP.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C22C
+</td>
+<td class="border">
+Too many processes are using the underlying socket provider.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C22D
+</td>
+<td class="border">
+The network subsystem is unavailable.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C22E
+</td>
+<td class="border">
+The version of the underlying socket provider is out of range.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C22F
+</td>
+<td class="border">
+The underlying socket provider has not been initialized.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C230
+</td>
+<td class="border">
+A graceful shutdown is in progress.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C231
+</td>
+<td class="border">
+The specified class was not found.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C232
+</td>
+<td class="border">
+The name of the host could not be resolved. Try again later.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C233
+</td>
+<td class="border">
+The error is unrecoverable or the requested database cannot be located.
+</td>
+<td class="border">
+</td>
+</tr>
+<tr>
+<td class="border">
+16#C234
+</td>
+<td class="border">
+The requested name or IP address was not found on the name server.
+</td>
+<td class="border">
+</td>
+</tr>
+</table></li>
+</ul></li>
+</ul>
+</div>
+<!-- *** Keep this chapter, if FILE_OPEN blocks are used in your library ******* -->
+<!-- *** Delete this chapter, if no FILE_OPEN block is  used in your library *** -->
+<section id="file_open" class="block">
+<h3>FILE_OPEN</h3>
+<table>
+<tr>
+<th class="border">
+Error ID
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+0
+</td>
+<td class="border">
+No error information available.
+</td>
+</tr>
+<tr>
+<td class="border">
+2
+</td>
+<td class="border">
+The maximum number of files is already opened.
+</td>
+</tr>
+<tr>
+<td class="border">
+4
+</td>
+<td class="border">
+The file is already opened.
+</td>
+</tr>
+<tr>
+<td class="border">
+5
+</td>
+<td class="border">
+File is write protected or access denied.
+</td>
+</tr>
+<tr>
+<td class="border">
+6
+</td>
+<td class="border">
+File name not defined.
+</td>
+</tr>
+</table>
+</section>
+<!-- *** Keep this chapter, if FILE_SEEK blocks are used in your library ******* -->
+<!-- *** Delete this chapter, if no FILE_SEEK block is  used in your library *** -->
+<section id="file_seek" class="block">
+<h3>FILE_SEEK</h3>
+<table>
+<tr>
+<th class="border">
+Error ID
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+0
+</td>
+<td class="border">
+No error information available.
+</td>
+</tr>
+<tr>
+<td class="border">
+1
+</td>
+<td class="border">
+Invalid file handle.
+</td>
+</tr>
+<tr>
+<td class="border">
+13
+</td>
+<td class="border">
+Invalid positioning mode or position specified is before the beginning
+of the file.
+</td>
+</tr>
+<tr>
+<td class="border">
+24
+</td>
+<td class="border">
+Position could not be set.
+</td>
+</tr>
+</table>
+</section>
+<!-- *** Keep this chapter, if FILE_READ blocks are used in your library ******* -->
+<!-- *** Delete this chapter, if no FILE_READ block is  used in your library *** -->
+<section id="file_read" class="block">
+<h3>FILE_READ</h3>
+<table>
+<tr>
+<th class="border">
+Error ID
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+0
+</td>
+<td class="border">
+No error information available.
+</td>
+</tr>
+<tr>
+<td class="border">
+1
+</td>
+<td class="border">
+Invalid file handle.
+</td>
+</tr>
+<tr>
+<td class="border">
+10
+</td>
+<td class="border">
+End of data reached.
+</td>
+</tr>
+<tr>
+<td class="border">
+12
+</td>
+<td class="border">
+The number of characters to be read is greater than the data buffer.
+</td>
+</tr>
+<tr>
+<td class="border">
+22
+</td>
+<td class="border">
+No data could be read.
+</td>
+</tr>
+</table>
+</section>
+<!-- *** Keep this chapter, if FILE_CLOSE blocks are used in your library ******* -->
+<!-- *** Delete this chapter, if no FILE_CLOSE block is  used in your library *** -->
+<section id="file_close" class="block">
+<h3>FILE_CLOSE</h3>
+<table>
+<tr>
+<th class="border">
+Error ID
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+0
+</td>
+<td class="border">
+No error information available.
+</td>
+</tr>
+<tr>
+<td class="border">
+1
+</td>
+<td class="border">
+Invalid file handle.
+</td>
+</tr>
+<tr>
+<td class="border">
+20
+</td>
+<td class="border">
+File could not be closed.
+</td>
+</tr>
+</table>
+</section>
+<!-- *** Keep this chapter, if STRING_TO_BUF blocks are used in your library ******* -->
+<!-- *** Delete this chapter, if no STRING_TO_BUF block is  used in your library *** -->
+<section id="string_to_buf" class="block">
+<h3>STRING_TO_BUF</h3>
+<table>
+<tr>
+<th class="border">
+Status number
+</th>
+<th class="border">
+Meaning
+</th>
+</tr>
+<tr>
+<td class="border">
+0
+</td>
+<td class="border">
+The copy process has been finished correctly.
+</td>
+</tr>
+<tr>
+<td class="border">
+1
+</td>
+<td class="border">
+The VAR_IN_OUT descriptors used for the parameter SRC and BUFFER are
+invalid. This is an internal error.
+</td>
+</tr>
+<tr>
+<td class="border">
+2
+</td>
+<td class="border">
+The length of the source buffer does not fit. The size of bytes to be
+copied assigned in BUF_CNT is larger than the available size of the SRC.
+</td>
+</tr>
+<tr>
+<td class="border">
+3
+</td>
+<td class="border">
+The length of the destination buffer does not fit. The sum of the bytes
+to be copied assigned in BUF_CNT and the offset in the connected byte
+stream assigned in BUF_OFFS is larger than the size of the connected
+byte stream.
+</td>
+</tr>
+<tr>
+<td class="border">
+4
+</td>
+<td class="border">
+This data type is not supported.
+</td>
+</tr>
+<tr>
+<td class="border">
+5
+</td>
+<td class="border">
+The alignment does not fit to this data type. The size to be copied
+assigned in BUF_CNT must be divisible without remainder by the size of
+the data type.
+</td>
+</tr>
+<tr>
+<td class="border">
+6
+</td>
+<td class="border">
+The conversion INTEL/MOTOROLA (Little-/Big-Endian)has failed.
+</td>
+</tr>
+<tr>
+<td class="border">
+7
+</td>
+<td class="border">
+The string length does not fit. Additional checks are necessary for the
+data type string.
+</td>
+</tr>
+<tr>
+<td class="border">
+8
+</td>
+<td class="border">
+The destination buffer has a wrong data type. In some cases the data
+type is checked. This is described in the special chapter for each data
+type.
+</td>
+</tr>
+<tr>
+<td class="border">
+9
+</td>
+<td class="border">
+The offset value is not correct. In some cases the offset is checked.
+This is described in the special chapter for each data type.
+</td>
+</tr>
+<tr>
+<td class="border">
+10
+</td>
+<td class="border">
+The BUF_CNT does not fit. In some cases the size to be copied is
+checked.
+</td>
+</tr>
+<tr>
+<td class="border">
+11
+</td>
+<td class="border">
+The addresses of the source and the destination are the same.
+</td>
+</tr>
+</table>
+</section>
+<div class="pagebreak">
+
+</div>
+<!-- *** Add data type definitions here ******************************************** -->
+<h2 id="data-types"><a class="link" name="Data_types">Data
+types</a></h2>
+<pre class="example">
+TYPE 
+  <div class="comment">(* Array for logging *)</div>
+  SLO_ARR_BUFFER : ARRAY [0..8499] OF BYTE;
+
+  <div class="comment">(* Two switching arrays for no data loss *)</div>    
+  SLO_ARR_ARR_BUFFER : ARRAY [0..1] OF SLO_ARR_BUFFER; 
+    
+  <div class="comment">(* Internal information *)</div>
+  SLO_UDT_LOGGING_BUFFER : STRUCT
+    iCount : INT;
+    iNumStrings : INT;
+  END_STRUCT;
+    
+  <div class="comment">(* Array for user logging values *)</div>
+  SLO_ARR_LOGGING_STRING : ARRAY[0..8] OF STRING;
+
+  <div class="comment">(*Diagnostic information *)</div>
+  SLO_UDT_DIAG : STRUCT
+    iState : INT;
+    wDiagCode : WORD;
+    wAddDiagCode : WORD;
+  END_STRUCT;
+    
+END_TYPE
+</pre>
+<!-- *** Add known issues or delete this chapter *** -->
+<h2 id="known-issues"><a class="link" name="Known_issues">Known
+issues</a></h2>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+est Lorem ipsum dolor sit amet.</p>
+</div>
+<section id="support" class="main">
+<h1><a class="link" name="Support">Support</a></h1>
+<!-- *** Change company name and link data here *** -->
+<p>For technical support please contact your local PHOENIX CONTACT
+agency </br> at <a
+href="https://www.phoenixcontact.com">https://www.phoenixcontact.com</a>
+</br></p>
+<p><strong>Owner:</strong></p>
+<!-- *** Change contact data here *** -->
+<p>PHOENIX CONTACT Electronics GmbH </br> Business Unit Automation
+Systems </br> System Services </br> Library Services </br></p>
+<!-- *** Adjust needed data for support here *** -->
+<p><strong>In case of a support request, we need:</strong></p>
+<ul>
+<li><p>Development system with:</p>
+<ul>
+<li>Name (e.g., PC Worx, PLCnext Engineer)</li>
+<li>Version (e.g., PLCnext Engineer 2022.0.1 LTS)</li>
+</ul></li>
+<li><p>Bus structure / plant including all articles with:</p>
+<ul>
+<li>Name</li>
+<li>Order number</li>
+<li>Firmware version</li>
+<li>External components</li>
+</ul></li>
+<li><p>Used libraries with:</p>
+<ul>
+<li>Name</li>
+<li>Version (e.g., IOL_Basic_7)</li>
+</ul></li>
+</ul>
+<p></br></p>
+</section>
+</body>
+</html>
