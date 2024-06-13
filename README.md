@@ -19,9 +19,8 @@ Select "Path" and click on "Edit". Then create two new entries here. The default
 
 <img src="./images/PathsSystemVariables.png" alt="drawing" width="400"/>
 
-In addition you will need a text editor for changing the Markdown files. In principle, you can use any
-simple text editor. For Notepad++ there is an add-on, which offers additional comfort functions. You can  
-also work with Visual Studio Code. It offers numerous convenience functions by default.
+In addition you will need a text editor for changing the Markdown files. In principle, you can use any simple text editor. 
+For Notepad++ there is an add-on, which offers additional comfort functions. You can also work with Visual Studio Code. It offers numerous convenience functions by default.
 
 --------------------------------
 
