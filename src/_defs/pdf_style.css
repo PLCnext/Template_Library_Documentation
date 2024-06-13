@@ -71,6 +71,11 @@ BODY {
     background-position-y: -15px;
 }
 
+img{
+    width:100%;
+    max-width:600px;
+}
+
 :target:before {
     content: "";
     display: block;
