@@ -11,6 +11,14 @@ To be able to generate the output files, the following software must be installe
 - Pandoc        --> https://pandoc.org/installing.html 	(free of charge)
 - wkhtmltopdf   --> https://wkhtmltopdf.org/downloads.html 	(free of charge)
 
+It may be nessecary to add both to your Windows system environment variables. This can be done within the system variables editor under "Path":
+
+<img src="./images/SystemEnvirnmentVariables.png" alt="drawing" width="400"/>
+
+Select "Path" and click on "Edit". Then create two new entries here. The default paths are as shown in the screenshot below, but please compare them on your computer first:
+
+<img src="./images/PathsSystemVariables" alt="drawing" width="400"/>
+
 In addition you will need a text editor for changing the Markdown files. In principle, you can use any
 simple text editor. For Notepad++ there is an add-on, which offers additional comfort functions. You can  
 also work with Visual Studio Code. It offers numerous convenience functions by default.
