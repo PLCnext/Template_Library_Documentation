@@ -26,10 +26,12 @@ For Notepad++ there is an add-on, which offers additional comfort functions. You
 
 # Known issues
 
-The HTML5 help works for visible library content only. 
+For PLCnext Engineer versions < 2024.6 the HTML5 help works for visible library content only. 
 If you restrict a function block or function in order to protect it agains read-access, the HTML help cannot be opened via the PLCnext Engineer context menu.
 
 <img src="./images/PLCnextEngOpenFbHelp.png" alt="drawing" width="400"/>
+
+However, if you work with PLCnext Engineer >= 2024.6, the HTML help for restricted blocks is working.
 
 --------------------------------
 
