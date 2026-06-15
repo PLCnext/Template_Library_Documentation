@@ -1,0 +1,3614 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Template_Library_Documentation</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="styles\html_style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Template_Library_Documentation</h1>
+</header>
+<div class="header">
+
+</div>
+<nav>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Create table of contents here ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h2 id="contents">CONTENTS</h2>
+<div id="toc" class="toc">
+<ol type="1">
+<li><a href="#startpage">Startpage</a>
+<!-- *** Mandatory -> Keep this chapter *** --><br />
+</li>
+<li><a href="#general_info">General information</a>
+<!-- *** Mandatory -> Keep this chapter *** --><br />
+</li>
+<li><a href="#installation">Installation hints</a>
+<!-- *** Mandatory -> Keep this chapter *** --><br />
+</li>
+<li><a href="#change_notes">Change notes</a>
+<!-- *** Mandatory -> Keep this chapter *** --><br />
+</li>
+<li><a href="#conventions">Naming conventions</a>
+<!-- *** Mandatory -> Keep this chapter *** --><br />
+</li>
+<li><a href="#components">Library components</a>
+<!-- *** Mandatory -> Keep this chapter *** --><br />
+</li>
+<li><a href="#LIBID_My_FU1_1">LIBID_My_FU1_1</a>
+<!-- *** Change or delete *** --><br />
+</li>
+<li><a href="#LIBID_My_FB1_1">LIBID_My_FB1_1</a>
+<!-- *** Change or delete *** --></li>
+<li><a href="#Group_1">Group 1</a> <!-- *** Change or delete *** -->
+<ul>
+<li><a href="#LIBID_My_FB2_1">LIBID_My_FB2_1</a>
+<!-- *** Change or delete *** --></li>
+<li><a href="#LIBID_My_FB3_1">LIBID_My_FB3_1</a>
+<!-- *** Change or delete *** --></li>
+</ul></li>
+<li><a href="#HMI_Symbols">HMI symbols</a>
+<!-- *** Change or delete *** -->
+<ul>
+<li><a href="#LIBID_SYM_Name_1">LIBID_SYM_Name_1</a>
+<!-- *** Change or delete *** --></li>
+</ul></li>
+<li><a href="#udt">User-defined data types</a>
+<!-- *** Mandatory if you use user-defined types in your library *** --></li>
+<li><a href="#fw_fb_diag_codes">Diag codes of used firmware blocks</a>
+<!-- *** Mandatory if you use firmware blocks in your library *** --></li>
+<li><a href="#licenses">Third-party licenses</a>
+<!-- *** Mandatory if you use third-party software in your library *** --></li>
+<li><a href="#known_issues">Known issues</a>
+<!-- *** Mandatory if your library has known issues *** --></li>
+<li><a href="#example">Startup example(s)</a>
+<!-- *** Mandatory -> Keep this chapter *** --></li>
+<li><a href="#support">Support</a>
+<!-- *** Mandatory -> Keep this chapter *** --></li>
+</ol>
+</div>
+</nav>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- JavaScript for chapter handling - Do NOT change! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<script>
+  
+/* ----------------------------------------------------------------------------------
+   Main chapter / navigation logic
+------------------------------------------------------------------------------------- */
+function showChapter(id) {
+  // Remove active class from all sections
+  document.querySelectorAll('.intro, .main')
+    .forEach(el => el.classList.remove('active'));
+
+  let el = document.getElementById(id);
+
+  if (el) {
+    // Case 1: Full chapter (main or intro)
+    if (el.classList.contains('main') || el.classList.contains('intro')) {
+      el.classList.add('active');
+
+      // Ensure page starts at top
+      window.scrollTo({ top: 0, behavior: "auto" });
+      return;
+    }
+
+    // Case 2: Sub-element (block inside chapter)
+    let parent = el.closest('.main, .intro');
+
+    if (parent) {
+      parent.classList.add('active');
+
+      // Scroll to element AFTER rendering
+      const yOffset = -70;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }
+}
+
+/* ----------------------------------------------------------------------------------
+   Initial page load handling
+------------------------------------------------------------------------------------- */
+window.addEventListener("load", function () {
+  const chapterName = window.location.hash.substring(1);
+
+  if (chapterName === "") {
+    showChapter('startpage');
+  } else {
+    showChapter(chapterName);
+  }
+});
+
+/* ----------------------------------------------------------------------------------
+   Hash change handling (when URL changes)
+------------------------------------------------------------------------------------- */
+window.addEventListener("hashchange", function () {
+  const id = window.location.hash.substring(1);
+
+  if (id) {
+    showChapter(id);
+  }
+});
+
+</script>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Library name ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Change library name here (use an ID for your library as prefix, e.g. "MB" for Modbus): *** -->
+<section id="libid_libname" class="header">
+<h1>LIBID_LibName</h1>
+</section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Company logo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Change logo path here or overwrite the existing logo image *** -->
+<div class="logo">
+<p><img src="./_images/company_logo.png">
+<!-- *** For libraries from Phoenix Contact use: ./_images/pxc_logo.png *** --></p>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Intro (general information) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="startpage" class="intro">
+<h1 id="function-block-library-for-plcnext-engineer">Function block
+library for PLCnext Engineer</h1>
+<p><br></p>
+<!-- *** Adjust information here: *** -->
+<p><strong>Library version:</strong> 2.0.0
+<!-- Library version format: Major.Minor.Patch --> <br></p>
+<p><strong>Document revision:</strong> 2.20 <br></p>
+<p><strong>Release date:</strong> 2026-04-30 <br></p>
+<p>This documentation is available in English only. <br></p>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Company address ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Change address here: *** -->
+<p><strong>Your Company</strong> <br> Company Street 123 <br> 12345
+City, Country <br></p>
+<!-- 
+PHOENIX CONTACT GmbH & Co. KG <br>
+Flachsmarktstrasse 8 <br>
+D-32825 Blomberg, Germany <br>
+-->
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- General information ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="general_info" class="main">
+<h1 id="general-information">General information</h1>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Library description ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="library-description" class="block">
+<h2>Library description</h2>
+<!-- *** Add a short description for your library here: *** -->
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+est Lorem ipsum dolor sit amet.</p>
+</section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Supported PLCnext Engineer versions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Provide information about the supported PLCnext Engineer versions: *** -->
+<h2 id="supported-plcnext-engineer-versions">Supported PLCnext Engineer
+versions</h2>
+<p>Minimum required version:
+<!-- e.g. PLCnext Engineer 2020.0 LTS --></p>
+<p>Maximum supported version:
+<!-- e.g. PLCnext Engineer 2023.0.1 LTS --></p>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Supported PLCs and firmware ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h2 id="supported-plcs-and-firmware">Supported PLCs and firmware</h2>
+<!-- *** Add or change supported controls here: *** -->
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 28%" />
+<col style="width: 18%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th>Product category</th>
+<th>Item designation</th>
+<th>Item no. </th>
+<th>Firmware</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Controller</td>
+<td>AXC F 1152</td>
+<td>1151412</td>
+<td>2025.0 LTS, 2025.0.x</td>
+</tr>
+<tr>
+<td>Controller</td>
+<td>AXC F 2152</td>
+<td>2404267</td>
+<td>2026.0 LTS, 2026.0.x</td>
+</tr>
+<tr>
+<td>Safety controller</td>
+<td>RFC 4072S</td>
+<td>1051328</td>
+<td>2026.3</td>
+</tr>
+</tbody>
+</table>
+<div class="pagebreak">
+
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Safety-related danger messages - Do NOT change! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h2 id="safety-related-danger-messages">Safety-related danger
+messages</h2>
+<!-- *** HINT: You can use the following snippets as templates in your documentation *** -->
+<p>In accordance with the applicable standards, the following hazard
+messages are used in this documentation.</p>
+<!-- Note box-->
+<div class="noteheadertext">
+Note
+</div>
+<div class="notetext">
+Note texts give you additional information that may be useful when
+working with this library.
+</div>
+<p><br></p>
+<!-- Caution box-->
+<div class="cautionheadertext">
+<img src="./_images/caution_label.gif"> Caution
+</div>
+<div class="notetext">
+A caution text informs you about a minor hazard situation which, if not
+avoided, may result in minor or moderate injury.
+</div>
+<p><br></p>
+<!-- Warning box-->
+<div class="warningheadertext">
+<img src="./_images/warning_label.gif"> Warning
+</div>
+<div class="notetext">
+This is a warning text. It informs you about a hazardous situation
+which, if not avoided, could result in death or serious injury.
+</div>
+<p><br></p>
+<!-- Danger box-->
+<div class="dangerheadertext">
+<img src="./_images/danger_label.gif"> Danger
+</div>
+<div class="notetext">
+This text indicates a hazardous situation which, if not avoided, will
+result in death or serious injury.
+</div>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Installation hints ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="installation" class="main">
+<h1 id="installation-hints">Installation hints</h1>
+<!-- *** NO need to change content here *** -->
+<p>If you did not specify a different directory during library
+installation, all data in the MSI file will be unpacked to</p>
+<p><strong>C:\Users\Public\Documents\Phoenix Contact Libraries\PLCnext
+Engineer</strong> <br> (former: PC Worx Engineer)</p>
+<p>Please copy the library data to the working library directory of
+PLCnext Engineer.</p>
+<p>If you did not specify a different directory during PLCnext Engineer
+installation, the default PLCnext Engineer working library directory
+is</p>
+<p><strong>C:\Users\Public\Documents\PLCnext Engineer\Libraries</strong>
+<br> (former: PC Worx Engineer\Libraries)</p>
+<p><br></p>
+<div class="noteheadertext">
+Note
+</div>
+<div class="notetext">
+<p>If HMI objects from this library are used in your project, make sure
+that English is configured as the default language: <br> <b>PLCnext
+Engineer &gt; Extras &gt; Options &gt; Default Language Settings &gt;
+en</b></p>
+</div>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Change notes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="change_notes" class="main">
+<h1 id="change-notes">Change notes</h1>
+<!-- *** Change/add version information here (newest version at the top, oldest version at the bottom): *** -->
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 15%" />
+<col style="width: 31%" />
+<col style="width: 23%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Version</th>
+<th>Build date</th>
+<th>Tested with <br> PLCnext Engineer</th>
+<th><strong>New</strong></th>
+<th><strong>Fixed</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.0.0</td>
+<td>2026-03-04</td>
+<td>2026.0 LTS</td>
+<td>LIBID_My_FU1_1, LIBID_My_FB4_1</td>
+<td>Data type mismatch in LIBID_My_FB1_1</td>
+</tr>
+<tr>
+<td>1.1.0</td>
+<td>2025-09-10</td>
+<td>2025.6</td>
+<td>LIBID_My_FB1_1 with further diagnostic information</td>
+<td></td>
+</tr>
+<tr>
+<td>1.0.0</td>
+<td>2025-02-26</td>
+<td>2025.0 LTS</td>
+<td>Initial release</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>* <strong>Library version format:</strong> Major.Minor.Patch</p>
+<!-- Use the following version format:
+
+<MAJOR>.<MINOR>.<PATCH>
+
+The numbers MAJOR, MINOR and PATCH are numbers between 1 and 1000.
+E.g. "1.2.3" or "43.203.32".
+
+Please use MAJOR version when you make incompatible API changes.  
+E.g. 3.0.0 is not compatible to 2.4.6.
+
+Increase the MINOR version when you add further functionalities in a backwards compatible manner.
+
+Use the PATCH version for bug fixes. -->
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Naming conventions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="conventions" class="main">
+<h1 id="naming-conventions">Naming conventions</h1>
+<!-- *** Use the provided naming convention in your code, or update the right column to match your own naming rule -->
+<!-- *** Please remove any table rows whose content is not relevant to your library *** -->
+<section id="prefixes-for-the-usage-types-of-variables-scope"
+class="block">
+<h2>Prefixes for the usage types of variables (scope)</h2>
+<table>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 23%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Designation</th>
+<th style="text-align: center;">PLCopen</th>
+<th style="text-align: center;">In this library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global flag</td>
+<td style="text-align: center;">g</td>
+<td style="text-align: center;">&lt;LIBID&gt;_G</td>
+</tr>
+<tr>
+<td>Process data input</td>
+<td style="text-align: center;">i</td>
+<td style="text-align: center;">&lt;LIBID&gt;_I</td>
+</tr>
+<tr>
+<td>Process data output</td>
+<td style="text-align: center;">o</td>
+<td style="text-align: center;">&lt;LIBID&gt;_Q</td>
+</tr>
+<tr>
+<td>Local variable</td>
+<td style="text-align: center;">l</td>
+<td style="text-align: center;">none</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Function / function block input parameter</td>
+<td style="text-align: center;">p</td>
+<td style="text-align: center;">IN</td>
+</tr>
+<tr>
+<td>Function block output parameter</td>
+<td style="text-align: center;">p</td>
+<td style="text-align: center;">OUT</td>
+</tr>
+<tr>
+<td>Function block in/out parameter</td>
+<td style="text-align: center;">p</td>
+<td style="text-align: center;">INOUT</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Program-global variable</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_Gp</td>
+</tr>
+<tr>
+<td>Instance-global input</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_Ii</td>
+</tr>
+<tr>
+<td>Instance-global output</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_Qi</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Global HMI variable</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_HMI</td>
+</tr>
+<tr>
+<td>Local HMI variable</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">hmi</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Input of a method</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">mIN</td>
+</tr>
+<tr>
+<td>Local variable of a method</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">m</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>IN Port (GDS)</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">INPORT</td>
+</tr>
+<tr>
+<td>OUT Port (GDS)</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">OUTPORT</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Safe process data input</td>
+<td style="text-align: center;">see table below</td>
+<td style="text-align: center;">&lt;LIBID&gt;_SI</td>
+</tr>
+<tr>
+<td>Safe process data output</td>
+<td style="text-align: center;">see table below</td>
+<td style="text-align: center;">&lt;LIBID&gt;_SQ</td>
+</tr>
+<tr>
+<td>Variable for data exchange between safety and non-safety
+programming</td>
+<td style="text-align: center;">see table below</td>
+<td style="text-align: center;">&lt;LIBID&gt;_SX</td>
+</tr>
+<tr>
+<td>Local safe variable</td>
+<td style="text-align: center;">see table below</td>
+<td style="text-align: center;">s</td>
+</tr>
+<tr>
+<td>Safe function block input</td>
+<td style="text-align: center;">see table below</td>
+<td style="text-align: center;">SIN</td>
+</tr>
+<tr>
+<td>Safe function block output</td>
+<td style="text-align: center;">see table below</td>
+<td style="text-align: center;">SOUT</td>
+</tr>
+</tbody>
+</table>
+<p>* n. d. - not defined</p>
+</section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="prefixes-for-data-types-of-variables" class="block">
+<h2>Prefixes for data types of variables</h2>
+<table>
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 26%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Designation</th>
+<th style="text-align: center;">PLCopen</th>
+<th style="text-align: center;">In this library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BOOL</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+</tr>
+<tr>
+<td>SINT</td>
+<td style="text-align: center;">si</td>
+<td style="text-align: center;">si</td>
+</tr>
+<tr>
+<td>INT</td>
+<td style="text-align: center;">i</td>
+<td style="text-align: center;">i</td>
+</tr>
+<tr>
+<td>DINT</td>
+<td style="text-align: center;">di</td>
+<td style="text-align: center;">di</td>
+</tr>
+<tr>
+<td>LINT</td>
+<td style="text-align: center;">li</td>
+<td style="text-align: center;">li</td>
+</tr>
+<tr>
+<td>USINT</td>
+<td style="text-align: center;">usi</td>
+<td style="text-align: center;">usi</td>
+</tr>
+<tr>
+<td>UINT</td>
+<td style="text-align: center;">ui</td>
+<td style="text-align: center;">ui</td>
+</tr>
+<tr>
+<td>UDINT</td>
+<td style="text-align: center;">udi</td>
+<td style="text-align: center;">udi</td>
+</tr>
+<tr>
+<td>ULINT</td>
+<td style="text-align: center;">uli</td>
+<td style="text-align: center;">uli</td>
+</tr>
+<tr>
+<td>REAL</td>
+<td style="text-align: center;">r</td>
+<td style="text-align: center;">r</td>
+</tr>
+<tr>
+<td>LREAL</td>
+<td style="text-align: center;">lr</td>
+<td style="text-align: center;">lr</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td style="text-align: center;">tim</td>
+<td style="text-align: center;">t</td>
+</tr>
+<tr>
+<td>LTIME</td>
+<td style="text-align: center;">ltim</td>
+<td style="text-align: center;">lt</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td style="text-align: center;">dt</td>
+<td style="text-align: center;">d</td>
+</tr>
+<tr>
+<td>LDATE</td>
+<td style="text-align: center;">ldt</td>
+<td style="text-align: center;">ldt</td>
+</tr>
+<tr>
+<td>TIME_OF_DAY / TOD</td>
+<td style="text-align: center;">tod</td>
+<td style="text-align: center;">td</td>
+</tr>
+<tr>
+<td>LTIME_OF_DAY / TOD</td>
+<td style="text-align: center;">ltod</td>
+<td style="text-align: center;">ltd</td>
+</tr>
+<tr>
+<td>DATE_AND_TIME / DT</td>
+<td style="text-align: center;">dt</td>
+<td style="text-align: center;">dt</td>
+</tr>
+<tr>
+<td>LDATE_AND_TIME / DT</td>
+<td style="text-align: center;">ldt</td>
+<td style="text-align: center;">ldt</td>
+</tr>
+<tr>
+<td>STRING</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">str</td>
+</tr>
+<tr>
+<td>WSTRING</td>
+<td style="text-align: center;">wstr</td>
+<td style="text-align: center;">wstr</td>
+</tr>
+<tr>
+<td>BYTE</td>
+<td style="text-align: center;">by</td>
+<td style="text-align: center;">b</td>
+</tr>
+<tr>
+<td>WORD</td>
+<td style="text-align: center;">w</td>
+<td style="text-align: center;">w</td>
+</tr>
+<tr>
+<td>DWORD</td>
+<td style="text-align: center;">dw</td>
+<td style="text-align: center;">dw</td>
+</tr>
+<tr>
+<td>LWORD</td>
+<td style="text-align: center;">lw</td>
+<td style="text-align: center;">lw</td>
+</tr>
+<tr>
+<td>Safe data types</td>
+<td style="text-align: center;">Data type prefix ends with: s; <br>
+Example: SAFEBOOL prefix is: xs</td>
+<td style="text-align: center;">Differentiation is at scope-level, not
+for data type</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="suffixes-for-variables" class="block">
+<h2>Suffixes for variables</h2>
+<table>
+<thead>
+<tr>
+<th>Designation</th>
+<th style="text-align: center;">PLCopen</th>
+<th style="text-align: center;">In this library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normally closed</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">NC</td>
+</tr>
+</tbody>
+</table>
+<p>* n. d. - not defined</p>
+</section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="exemplary-variable-names" class="block">
+<h2>Exemplary variable names</h2>
+<ul>
+<li>Local boolean variable: xVarName</li>
+<li>Global flag of data type REAL: &lt;LIBID&gt;_G_rVarName</li>
+<li>Variable for a normally closed switch:
+&lt;LIBID&gt;_I_xSwitch_NC</li>
+<li>Local HMI variable of data type INT: hmi_iVarName</li>
+<li>Function block input of data type TIME: IN_tVarName</li>
+<li>Safe local boolean variable: s_xVarName</li>
+</ul>
+</section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="prefixes-for-data-type-definitions" class="block">
+<h2>Prefixes for data type definitions</h2>
+<table>
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 26%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Designation</th>
+<th style="text-align: center;">PLCopen</th>
+<th style="text-align: center;">In this library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structure</td>
+<td style="text-align: center;">ST</td>
+<td style="text-align: center;">&lt;LIBID&gt;_ST</td>
+</tr>
+<tr>
+<td>Enumeration</td>
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">&lt;LIBID&gt;_E</td>
+</tr>
+<tr>
+<td>Array</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">&lt;LIBID&gt;_ARR</td>
+</tr>
+<tr>
+<td>User-defined STRING (WSTRING)</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_(W)STR_&lt;length&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>* n. d. - not defined</p>
+</section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="exemplary-names-for-data-types" class="block">
+<h2>Exemplary names for data types</h2>
+<ul>
+<li>Structure: &lt;LIBID&gt;_ST_Name</li>
+<li>Enumeration: &lt;LIBID&gt;_E_Name</li>
+<li>Array with fields from 1 to 100 of data type DINT:
+&lt;LIBID&gt;_ARR_DI_1_100</li>
+<li>User-defined STRING with 45 characters: &lt;LIBID&gt;_STR_45</li>
+</ul>
+</section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="prefixes-for-component-types" class="block">
+<h2>Prefixes for component types</h2>
+<table>
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 27%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr>
+<th>Designation</th>
+<th style="text-align: center;">PLCopen</th>
+<th style="text-align: center;">In this library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Program</td>
+<td style="text-align: center;">PRG</td>
+<td style="text-align: center;">&lt;LIBID&gt;_PG</td>
+</tr>
+<tr>
+<td>Function block</td>
+<td style="text-align: center;">FB</td>
+<td style="text-align: center;">&lt;LIBID&gt;_FB</td>
+</tr>
+<tr>
+<td>Function</td>
+<td style="text-align: center;">FU</td>
+<td style="text-align: center;">&lt;LIBID&gt;_FU</td>
+</tr>
+<tr>
+<td>Method</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_MTH</td>
+</tr>
+<tr>
+<td>SFC step name</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_S</td>
+</tr>
+<tr>
+<td>SFC action (worksheet)</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_A</td>
+</tr>
+<tr>
+<td>SFC transition (worksheet)</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_T</td>
+</tr>
+<tr>
+<td>SFC interlock (worksheet)</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_LCK</td>
+</tr>
+<tr>
+<td>HMI page</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_PAGE</td>
+</tr>
+<tr>
+<td>HMI symbol</td>
+<td style="text-align: center;">n. d.</td>
+<td style="text-align: center;">&lt;LIBID&gt;_SYM</td>
+</tr>
+</tbody>
+</table>
+<p>* n. d. - not defined</p>
+</section>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="exemplary-names-for-components" class="block">
+<h2>Exemplary names for components</h2>
+<ul>
+<li>Function block version 2: &lt;LIBID&gt;_FB_Name_2</li>
+<li>Method version 1: &lt;LIBID&gt;_MTH_Name_1</li>
+<li>HMI symbol version 3: &lt;LIBID&gt;_SYM_Name_3</li>
+</ul>
+</section>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Library components ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="components" class="main">
+<h1 id="library-components">Library components</h1>
+<h2 id="functions">Functions</h2>
+<!-- *** List and describe functions here *** -->
+<!-- *** Delete this chapter if there is no function in your library *** -->
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 8%" />
+<col style="width: 36%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Version</th>
+<th>Short description</th>
+<th>Related products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#LIBID_My_FU1_1">LIBID_My_FU1_1</a></td>
+<td>1.0</td>
+<td>This function can be used to … Lorem ipsum dolor sit amet,
+consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+sea takimata sanctus est Lorem ipsum dolor sit amet.</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+<!-- Naming of functions: 
+    
+Using several libraries within one project can cause problems if they do not have a unique ID. 
+
+Choose a unique library ID and version number for function blocks and functions.
+Insert the library ID before the name, the version number at the end.
+
+Syntax: <Lib_ID>_<FU_Name>_<Version>
+
+Example: PBCL_ConvIEEEToReal_1
+
+<Lib_ID> = PBCL
+<FU_Name> = ConvIEEEToReal
+<Version> = 1
+
+-->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h2 id="function-blocks">Function blocks</h2>
+<!-- *** List and describe function blocks here *** -->
+<!-- *** Delete this chapter if there is no function block in your library *** -->
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 8%" />
+<col style="width: 36%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Version</th>
+<th>Short description</th>
+<th>Related products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#LIBID_My_FB1_1">LIBID_My_FB1_1</a></td>
+<td>1.0</td>
+<td>This function block can be used to …</td>
+<td>AXL SE RS232 (item no. 1181787)</td>
+</tr>
+<tr>
+<td><a href="#LIBID_My_FB2_1">LIBID_My_FB2_1</a></td>
+<td>1.0</td>
+<td>This function block can be used to …</td>
+<td>/</td>
+</tr>
+<tr>
+<td><a href="#LIBID_My_FB3_1">LIBID_My_FB3_1</a></td>
+<td>1.0</td>
+<td>This function block can be used to …</td>
+<td>AXL SE RS232 (item no. 1181787)</td>
+</tr>
+</tbody>
+</table>
+<!-- Naming of function blocks: 
+    
+Using several libraries within one project can cause problems if they do not have a unique ID. 
+
+Choose a unique library ID and version number for function blocks and functions.
+Insert the library ID before the name, the version number at the end.
+
+Syntax: <Lib_ID>_<FB_Name>_<Version>
+
+Example: MB_RTU_Master_5
+
+<Lib_ID> = MB
+<FB_Name> = RTU_Master
+<Version> = 5
+
+-->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** List and describe HMI symbols here *** -->
+<!-- *** Delete this chapter if there is no symbol in your library *** -->
+<h2 id="hmi-symbols">HMI symbols</h2>
+<table>
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 8%" />
+<col style="width: 36%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Version</th>
+<th>Short description</th>
+<th>Related products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#LIBID_SYM_Name_1">LIBID_SYM_Name_1</a></td>
+<td>1.0</td>
+<td>This HMI symbol can be used to …</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- LIBID_FU1_1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Use FU name as id *** -->
+<div id="LIBID_My_FU1_1" class="main">
+<!-- *** Change FU name here *** -->
+<h1 id="libid_my_fu1_1">LIBID_My_FU1_1</h1>
+<p><strong>Type:</strong> Function</p>
+<hr />
+<!-- *** Describe your function here: *** -->
+<h2 id="description">Description</h2>
+<p>This function is used to …. <br> The function provides the
+following:</p>
+<ul>
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li><p>…</p></li>
+</ul>
+<!-- *** Exemplary call(s) of your function (one example is mandatory) *** -->
+<section id="examples" class="block">
+<h2>Example(s)</h2>
+<p><strong>Example in FBD:</strong></p>
+<p><img src="_images/image.png">
+<!-- *** Change image name here *** --></p>
+</section>
+<!-- *** Provide notes for working with this function *** -->
+<div class="block">
+<div class="noteheadertext">
+Note
+</div>
+<div class="notetext">
+<ul>
+<li><p>All parameters can be negated. <br><br> <strong>Negation of
+formal parameters is not supported in safety-related code
+(SNOLD).</strong></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+</div>
+<!-- *** Add/change the input parameter descriptions here:  *** -->
+<section id="inputs" class="block">
+<h2>Inputs</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 16%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IN_xActivate</td>
+<td>BOOL</td>
+<td>Function activation</td>
+</tr>
+<tr>
+<td>IN_xVar1</td>
+<td>BOOL</td>
+<td>Description of parameter xVar1</td>
+</tr>
+<tr>
+<td>IN_xVar2</td>
+<td>BOOL</td>
+<td>Description of parameter xVar2</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- *** Add/change the output parameter description here: *** -->
+<section id="return-value" class="block">
+<h2>Return value</h2>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BOOL</td>
+<td>Description of the return value</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- *** Section for additional information (optional) *** -->
+<section id="additional-information" class="block">
+<h2>Additional information</h2>
+<p>This function can be combined with the HMI symbol <a
+href="#LIBID_SYM_Name_1">LIBID_SYM_Name_1</a>.</p>
+</section>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- LIBID_FB1_1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Use FB name as id  *** -->
+<div id="LIBID_My_FB1_1" class="main">
+<!-- *** Change FB name here *** -->
+<h1 id="libid_my_fb1_1">LIBID_My_FB1_1</h1>
+<p><strong>Type:</strong> Function block</p>
+<hr />
+<!-- *** Describe your function block here: *** -->
+<h2 id="description-1">Description</h2>
+<p>This function block is used to … <br> The function block provides the
+following:</p>
+<ul>
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li><p>…</p></li>
+</ul>
+<!-- *** Exemplary call(s) of your function block (one example is mandatory) *** -->
+<section id="examples-1" class="block">
+<h2>Example(s)</h2>
+<p><strong>Example in FBD:</strong></p>
+<p><img src="_images/image.png">
+<!-- *** Change image name here *** --></p>
+</section>
+<!-- *** Provide notes for working with this function block *** -->
+<div class="block">
+<div class="noteheadertext">
+Note
+</div>
+<div class="notetext">
+<ul>
+<li><p>All parameters can be negated. <br><br> <strong>Negation of
+formal parameters is not supported in safety-related code
+(SNOLD).</strong></p></li>
+<li><p>Function blocks must be instantiated. The instance name of the
+function block has to be declared in the ‘Variables’ table of the POU
+where the FB is going to be used. The instance name must be unique
+within the POU.</p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+</div>
+<!-- *** Add/modify the input parameter descriptions here:  *** -->
+<section id="inputs-1" class="block">
+<h2>Inputs</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IN_xActivate</td>
+<td>BOOL</td>
+<td>Function block activation</td>
+</tr>
+<tr>
+<td>IN_bVar1</td>
+<td>BYTE</td>
+<td>Description of parameter bVar1</td>
+</tr>
+<tr>
+<td>IN_eColor</td>
+<td><a href="#LIBID_E_TrafficLight">LIBID_E_TrafficLight</a></td>
+<td>Enumeration used for color selection</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- *** Add/modify the output parameter descriptions here: *** -->
+<section id="outputs" class="block">
+<h2>Outputs</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OUT_xActive</td>
+<td>BOOL</td>
+<td>Function block active status</td>
+</tr>
+<tr>
+<td>OUT_xError</td>
+<td>BOOL</td>
+<td>Function block error status</td>
+</tr>
+<tr>
+<td>OUT_wDiagCode</td>
+<td>WORD</td>
+<td>Diagnostic code. See the “Error codes” section for further
+information</td>
+</tr>
+<tr>
+<td>OUT_wAddDiagCode</td>
+<td>WORD</td>
+<td>Additional diagnostic code. See the “Error codes” section for
+further information</td>
+</tr>
+<tr>
+<td>OUT_rResult</td>
+<td>REAL</td>
+<td>Description of parameter rResult</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- *** Add/modify the inout parameter descriptions here: *** -->
+<section id="inout" class="block">
+<h2>InOut</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 35%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INOUT_stMotorData</td>
+<td><a href="#LIBID_ST_Motor">LIBID_ST_Motor</a></td>
+<td>Motor data</td>
+</tr>
+<tr>
+<td>INOUT_arrAllMotorData</td>
+<td><a href="#Arrays-of-project-data-types">LIBID_ARR_Motor_0_6</a></td>
+<td>Collected motor data of all motors</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- *** Add/modify dependencies (optional chapter -> delete chapter if there are no dependencies) *** -->
+<section id="dependencies" class="block">
+<h2>Dependencies</h2>
+<p><strong>Global variables:</strong></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTC</td>
+<td>RTC_TYPE</td>
+<td>Real-time clock (date and time of the PLC)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Library-internal and external functions and function
+blocks:</strong></p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 23%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PTD_FB_Zones_1</td>
+<td>PTD_ParcelTurning_1_3_1</td>
+<td>Outputs drive zone/position</td>
+</tr>
+<tr>
+<td><a href="#LIBID_My_FU1_1">LIBID_My_FU1_1</a></td>
+<td>Library-internal</td>
+<td>Short description of LIBID_My_FU1_1</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- *** Describe diagnostic codes within the first or second table *** -->
+<section id="error-codes" class="block">
+<h2>Error codes</h2>
+<p><strong>Error codes for OUT_wDiagCode:</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr>
+<th>OUT_wDiagCode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#0000</td>
+<td>Function block is deactivated</td>
+</tr>
+<tr>
+<td>16#8000</td>
+<td>Function block is in regular operation</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</section>
+<div class="block">
+<p><strong>Error codes for OUT_wDiagCode and
+OUT_wAddDiagCode:</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr>
+<th>OUT_wDiagCode</th>
+<th>OUT_wAddDiagCode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#0000</td>
+<td>16#0000</td>
+<td>Function block is deactivated</td>
+</tr>
+<tr>
+<td>16#8000</td>
+<td>16#0000</td>
+<td>Function block is in regular operation</td>
+</tr>
+<tr>
+<td>16#C110</td>
+<td></td>
+<td>An invalid input parameter has been detected</td>
+</tr>
+<tr>
+<td>16#C520</td>
+<td></td>
+<td>Error in an internally used function block</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<!-- *** Section for additional information (optional) *** -->
+<section id="additional-information-1" class="block">
+<h2>Additional information</h2>
+<p>This function block can be combined with the HMI symbol <a
+href="#LIBID_SYM_Name_1">LIBID_SYM_Name_1</a>.</p>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+takimata sanctus est Lorem ipsum dolor sit amet.</p>
+</section>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Group_1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Use group name as id  *** -->
+<div id="Group_1" class="main">
+<!-- *** Change group name here: *** -->
+<h1 id="group-1">Group 1</h1>
+<p>In this group you can find function blocks for …
+<!-- e.g. communication establishment --></p>
+<!-- *** List all function blocks (and/or functions) of this group *** -->
+<p><strong>List of function blocks</strong>:</p>
+<ul>
+<li><p><a href="#LIBID_My_FB2_1">LIBID_My_FB2_1</a></p></li>
+<li><p><a href="#LIBID_My_FB3_1">LIBID_My_FB3_1</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- LIBID_FB2_1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Use FB name as id  *** -->
+<div id="LIBID_My_FB2_1" class="main">
+<!-- *** Change FB name here *** -->
+<h2 id="libid_my_fb2_1">LIBID_My_FB2_1</h2>
+<p><strong>Type:</strong> Function block</p>
+<hr />
+<!-- *** Describe your function block here: *** -->
+<h3 id="description-2">Description</h3>
+<p>This function block is used to … <br> The function block provides the
+following:</p>
+<ul>
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li><p>…</p></li>
+</ul>
+<!-- *** Exemplary call(s) of your function block (one example is mandatory) *** -->
+<section id="examples-2" class="block">
+<h3>Example(s)</h3>
+<p><strong>Example in FBD:</strong></p>
+<p><img src="_images/image.png">
+<!-- *** Change image name here *** --></p>
+</section>
+<!-- *** Provide notes for working with this function block *** -->
+<div class="block">
+<div class="noteheadertext">
+Note
+</div>
+<div class="notetext">
+<!-- Add the block notes here: -->
+<ul>
+<li><p>All parameters can be negated. <br><br> <strong>Negation of
+formal parameters is not supported in safety-related code
+(SNOLD).</strong></p></li>
+<li><p>Function blocks must be instantiated. The instance name of the
+function block has to be declared in the ‘Variables’ table of the POU
+where the FB is going to be used. The instance name must be unique
+within the POU.</p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+</div>
+<!-- *** Add/modify the input parameter descriptions here:  *** -->
+<section id="inputs-2" class="block">
+<h3>Inputs</h3>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IN_xActivate</td>
+<td>BOOL</td>
+<td>Function block activation</td>
+</tr>
+<tr>
+<td>IN_bVar1</td>
+<td>BYTE</td>
+<td>Description of parameter bVar1</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- *** Add/modify the output parameter descriptions here: *** -->
+<section id="outputs-1" class="block">
+<h3>Outputs</h3>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OUT_xActive</td>
+<td>BOOL</td>
+<td>Function block active status</td>
+</tr>
+<tr>
+<td>OUT_xError</td>
+<td>BOOL</td>
+<td>Function block error status</td>
+</tr>
+<tr>
+<td>OUT_wDiagCode</td>
+<td>WORD</td>
+<td>Diagnostic code. See the “Error codes” section for further
+information</td>
+</tr>
+<tr>
+<td>OUT_wAddDiagCode</td>
+<td>WORD</td>
+<td>Additional diagnostic code. See the “Error codes” section for
+further information</td>
+</tr>
+<tr>
+<td>OUT_rResult</td>
+<td>REAL</td>
+<td>Description of parameter rResult</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- *** Add/modify the inout parameter descriptions here: *** -->
+<section id="inout-1" class="block">
+<h3>InOut</h3>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 34%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INOUT_stMotorData</td>
+<td><a href="#LIBID_ST_Motor">LIBID_ST_Motor</a></td>
+<td>Motor data</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- *** Add/modify dependencies (optional chapter -> delete chapter if there are no dependencies) *** -->
+<section id="dependencies-1" class="block">
+<h3>Dependencies</h3>
+<p><strong>Global variables:</strong></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTC</td>
+<td>RTC_TYPE</td>
+<td>Real-time clock (date and time of the PLC)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Library-internal and external functions and function
+blocks:</strong></p>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 23%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PTD_FB_Zones_1</td>
+<td>PTD_ParcelTurning_1_3_1</td>
+<td>Outputs drive zone/position</td>
+</tr>
+<tr>
+<td><a href="#LIBID_My_FU1_1">LIBID_My_FU1_1</a></td>
+<td>Library-internal</td>
+<td>Short description of LIBID_My_FU1_1</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- *** Describe diagnostic codes within the first or second table *** -->
+<section id="error-codes-1" class="block">
+<h3>Error codes</h3>
+<p><strong>Error codes for OUT_wDiagCode:</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr>
+<th>OUT_wDiagCode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#0000</td>
+<td>Function block is deactivated</td>
+</tr>
+<tr>
+<td>16#8000</td>
+<td>Function block is in regular operation</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</section>
+<div class="block">
+<p><strong>Error codes for OUT_wDiagCode and
+OUT_wAddDiagCode:</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr>
+<th>OUT_wDiagCode</th>
+<th>OUT_wAddDiagCode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#0000</td>
+<td>16#0000</td>
+<td>Function block is deactivated</td>
+</tr>
+<tr>
+<td>16#8000</td>
+<td>16#0000</td>
+<td>Function block is in regular operation</td>
+</tr>
+<tr>
+<td>16#C110</td>
+<td></td>
+<td>An invalid input parameter has been detected</td>
+</tr>
+<tr>
+<td>16#C520</td>
+<td></td>
+<td>Error in an internally used function block</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<!-- *** Section for additional information (optional) *** -->
+<section id="additional-information-2" class="block">
+<h3>Additional information</h3>
+<p>This function block can be combined with the HMI symbol <a
+href="#LIBID_SYM_Name_1">LIBID_SYM_Name_1</a>.</p>
+</section>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- LIBID_FB3_1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Use FB name as id  *** -->
+<div id="LIBID_My_FB3_1" class="main">
+<!-- *** Change FB name here *** -->
+<h2 id="libid_my_fb3_1">LIBID_My_FB3_1</h2>
+<p><strong>Type:</strong> Function block</p>
+<hr />
+<!-- *** Describe your function block here: *** -->
+<h3 id="description-3">Description</h3>
+<p>This function block is used to … <br> The function block provides the
+following:</p>
+<ul>
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li><p>…</p></li>
+</ul>
+<!-- *** Exemplary call(s) of your function block (one example is mandatory) *** -->
+<section id="examples-3" class="block">
+<h3>Example(s)</h3>
+<p><strong>Example in FBD:</strong></p>
+<p><img src="_images/image.png">
+<!-- *** Change image name here *** --></p>
+</section>
+<!-- *** Provide notes for working with this function block *** -->
+<div class="block">
+<div class="noteheadertext">
+Note
+</div>
+<div class="notetext">
+<ul>
+<li><p>All parameters can be negated. <br><br> <strong>Negation of
+formal parameters is not supported in safety-related code
+(SNOLD).</strong></p></li>
+<li><p>Function blocks must be instantiated. The instance name of the
+function block has to be declared in the ‘Variables’ table of the POU
+where the FB is going to be used. The instance name must be unique
+within the POU.</p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+</div>
+<!-- *** Add/modify the input parameter descriptions here: *** -->
+<section id="inputs-3" class="block">
+<h3>Inputs</h3>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IN_xActivate</td>
+<td>BOOL</td>
+<td>Function block activation</td>
+</tr>
+<tr>
+<td>IN_bVar1</td>
+<td>BYTE</td>
+<td>Description of parameter bVar1</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- *** Add/modify the output parameter descriptions here: *** -->
+<section id="outputs-2" class="block">
+<h3>Outputs</h3>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 62%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OUT_xActive</td>
+<td>BOOL</td>
+<td>Function block active status</td>
+</tr>
+<tr>
+<td>OUT_xError</td>
+<td>BOOL</td>
+<td>Function block error status</td>
+</tr>
+<tr>
+<td>OUT_wDiagCode</td>
+<td>WORD</td>
+<td>Diagnostic code. See the “Error codes” section for further
+information</td>
+</tr>
+<tr>
+<td>OUT_wAddDiagCode</td>
+<td>WORD</td>
+<td>Additional diagnostic code. See the “Error codes” section for
+further information</td>
+</tr>
+<tr>
+<td>OUT_rResult</td>
+<td>REAL</td>
+<td>Description of parameter rResult</td>
+</tr>
+</tbody>
+</table>
+</section>
+<!-- *** Add/modify the inout parameter descriptions here: *** -->
+<section id="inout-2" class="block">
+<h3>InOut</h3>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 33%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INOUT_stData</td>
+<td><a href="#LIBID_ST_Motor">LIBID_ST_Motor</a></td>
+<td>Motor data</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- *** Add/modify dependencies (optional chapter -> delete chapter if there are no dependencies) *** -->
+<section id="dependencies-2" class="block">
+<h3>Dependencies</h3>
+<p><strong>Global variables:</strong></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Data type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTC</td>
+<td>RTC_TYPE</td>
+<td>Real-time clock (date and time of the PLC)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Library-internal and external functions and function
+blocks:</strong></p>
+<table>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 23%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PTD_FB_Zones_1</td>
+<td>PTD_ParcelTurning_1_3_1</td>
+<td>Outputs drive zone/position</td>
+</tr>
+<tr>
+<td><a href="#LIBID_My_FU1_1">LIBID_My_FU1_1</a></td>
+<td>Library-internal</td>
+<td>Short description of LIBID_My_FU1_1</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- *** Describe diagnostic codes within the first or second table *** -->
+<section id="error-codes-2" class="block">
+<h3>Error codes</h3>
+<p><strong>Error codes for OUT_wDiagCode:</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr>
+<th>OUT_wDiagCode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#0000</td>
+<td>Function block is deactivated</td>
+</tr>
+<tr>
+<td>16#8000</td>
+<td>Function block is in regular operation</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</section>
+<div class="block">
+<p><strong>Error codes for OUT_wDiagCode and
+OUT_wAddDiagCode:</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr>
+<th>OUT_wDiagCode</th>
+<th>OUT_wAddDiagCode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#0000</td>
+<td>16#0000</td>
+<td>Function block is deactivated</td>
+</tr>
+<tr>
+<td>16#8000</td>
+<td>16#0000</td>
+<td>Function block is in regular operation</td>
+</tr>
+<tr>
+<td>16#C110</td>
+<td></td>
+<td>An invalid input parameter has been detected</td>
+</tr>
+<tr>
+<td>16#C520</td>
+<td></td>
+<td>Error in an internally used function block</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<!-- *** Section for additional information (optional) *** -->
+<section id="additional-information-3" class="block">
+<h3>Additional information</h3>
+<p>My additional information …</p>
+</section>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- HMI symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="HMI_Symbols" class="main">
+<h1 id="hmi-symbols-1">HMI symbols</h1>
+<!-- *** Please note that when providing HMI symbols with translations into other languages, the default language
+<!--     must be set to English in PLCnext Engineer *** -->
+<p>In this group you can find HMI symbols.</p>
+<!-- *** List all symbols here: *** -->
+<p><strong>List of HMI symbols</strong>:</p>
+<ul>
+<li><p><a href="#LIBID_SYM_Name_1">LIBID_SYM_Name_1</a></p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- LIBID_SYM_Name_1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Use symbol name as id  *** -->
+<div id="LIBID_SYM_Name_1" class="main">
+<!-- *** Change symbol name here: *** -->
+<h2 id="libid_sym_name_1">LIBID_SYM_Name_1</h2>
+<p><strong>Type:</strong> HMI symbol</p>
+<hr />
+<!-- *** Describe your HMI symbol here: *** -->
+<h3 id="description-4">Description</h3>
+<p>This HMI symbol is used to …. <br></p>
+<!-- *** Exemplary instance of your symbol (one example is mandatory) *** -->
+<section id="examples-4" class="block">
+<h3>Example(s)</h3>
+<p><img src="_images/LIBID_SYM_Name_1.png">
+<!-- *** Change image name here *** --></p>
+</section>
+<!-- *** Provide notes for working with this symbol *** -->
+<div class="block">
+<div class="noteheadertext">
+Note
+</div>
+<div class="notetext">
+<ul>
+<li><p>HMI symbols must be instantiated. An instance of an HMI symbol
+can be created either within another symbol or on an HMI page.</p></li>
+<li><p>A symbol may be instantiated multiple times; however, each
+instance must have a unique object ID.</p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+</div>
+<!-- *** Add/modify the parameter descriptions here:  *** -->
+<section id="hmi-parameters" class="block">
+<h3>HMI parameters</h3>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 13%" />
+<col style="width: 37%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter name</th>
+<th>Type</th>
+<th>UDT</th>
+<th>Description</th>
+<th><strong>Input/output for symbol</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>strName</td>
+<td>ANY_STRING</td>
+<td></td>
+<td>Device name to be displayed</td>
+<td>IN</td>
+</tr>
+<tr>
+<td>xMoveBwdReq</td>
+<td>BOOL</td>
+<td></td>
+<td>Request to drive backwards via button</td>
+<td>IN</td>
+</tr>
+<tr>
+<td>xMoveFwdReq</td>
+<td>BOOL</td>
+<td></td>
+<td>Request to drive forward via button</td>
+<td>OUT</td>
+</tr>
+<tr>
+<td>xRearPos_NC</td>
+<td>BOOL</td>
+<td></td>
+<td>Sensor at rear position (normally closed)</td>
+<td>OUT</td>
+</tr>
+<tr>
+<td>xFrontPos_NC</td>
+<td>BOOL</td>
+<td></td>
+<td>Sensor at front position (normally closed)</td>
+<td>OUT</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- *** Add/modify dependencies (optional chapter -> delete chapter if there are no dependencies) *** -->
+<section id="dependencies-3" class="block">
+<h3>Dependencies</h3>
+<p>This HMI symbol requires the instantiation of <a
+href="#LIBID_My_FB1_1">LIBID_My_FB1_1</a>.</p>
+</section>
+<hr />
+<!-- *** Section for additional information (optional) *** -->
+<section id="additional-information-4" class="block">
+<h3>Additional information</h3>
+<p>My additional information …</p>
+</section>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- User-defined data types ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Keep this file, if you use user-defined data types in your library *** -->
+<!-- *** Delete this file, if there is no user-defined data type in your library *** -->
+<div id="udt" class="main">
+<h1 id="user-defined-data-types">User-defined data types</h1>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if you use user-defined structures in your library  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="LIBID_ST_Motor" class="block">
+<p><!-- *** Change id here *** --></p>
+<h2 id="structure-libid_st_motor">Structure LIBID_ST_Motor
+<!-- *** Change name of the structure *** --></h2>
+<!-- *** Change table content here: *** -->
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 15%" />
+<col style="width: 14%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr>
+<th>Element name</th>
+<th>Data type</th>
+<th>Initial value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xMotorStart</td>
+<td>BOOL</td>
+<td>FALSE</td>
+<td>Trigger to start motor</td>
+</tr>
+<tr>
+<td>xMotorStop</td>
+<td>BOOL</td>
+<td>FALSE</td>
+<td>Trigger to stop motor</td>
+</tr>
+<tr>
+<td>iSpeed</td>
+<td>INT</td>
+<td>0</td>
+<td>Motor speed</td>
+</tr>
+<tr>
+<td>xError</td>
+<td>BOOL</td>
+<td>FALSE</td>
+<td>Motor error occurred</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if you use user-defined enumerations in your library  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="LIBID_E_TrafficLight" class="block">
+<p><!-- *** Change id here *** --></p>
+<h2 id="enumeration-libid_e_trafficlight">Enumeration
+LIBID_E_TrafficLight
+<!-- *** Change name of the enumeration *** --></h2>
+<!-- *** Change table content here: *** -->
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 14%" />
+<col style="width: 18%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th>Element name</th>
+<th>Value</th>
+<th>Is initial value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Red</td>
+<td>0</td>
+<td>x</td>
+<td>Red traffic light</td>
+</tr>
+<tr>
+<td>Yellow</td>
+<td>1</td>
+<td></td>
+<td>Yellow traffic light</td>
+</tr>
+<tr>
+<td>Green</td>
+<td>5</td>
+<td></td>
+<td>Green traffic light</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if you use user-defined arrays based on elementary data types in your library ~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="Arrays-of-elementary-data-types" class="block">
+<h2 id="arrays-of-elementary-data-types">Arrays of elementary data
+types</h2>
+<!-- *** Change content here: *** -->
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 31%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr>
+<th>Array name</th>
+<th>Base-type</th>
+<th>Lower bound</th>
+<th>Upper bound</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LIBID_ARR_W_1_8</td>
+<td>WORD</td>
+<td>1</td>
+<td>8</td>
+</tr>
+<tr>
+<td>LIBID_ARR_DI_0_20</td>
+<td>DINT</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>LIBID_ARR_UI_0_20</td>
+<td>UINT</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>LIBID_ARR_R_0_25</td>
+<td>REAL</td>
+<td>0</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if you use user-defined arrays based on project data types in your library ~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="Arrays-of-project-data-types" class="block">
+<h2 id="arrays-of-project-data-types">Arrays of project data types</h2>
+<!-- *** Change content here: *** -->
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 43%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>Array name</th>
+<th>Base-type</th>
+<th>Lower bound</th>
+<th>Upper bound</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LIBID_ARR_Motor_0_6</td>
+<td><a href="#LIBID_ST_Motor">LIBID_ST_Motor</a></td>
+<td>0</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="pagebreak">
+
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Diag codes of used firmware blocks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Keep this file, if you use firmware blocks in your library *** -->
+<div id="fw_fb_diag_codes" class="main">
+<h1 id="diag-codes-of-used-firmware-function-blocks">Diag codes of used
+firmware function blocks</h1>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if PDI_READ is used in your library, otherwise delete it ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="pdi_read" class="block">
+<h2>PDI_READ</h2>
+<p>ERROR = TRUE</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>STATUS[0]</th>
+<th>STATUS[1]</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#09B0</td>
+<td>16#000C</td>
+<td>The variable connected to RD_1 is invalid (no array or invalid array
+type).</td>
+</tr>
+<tr>
+<td>16#09B0</td>
+<td>16#000B</td>
+<td>The array connected to RD_1 is too small to save the requested
+receive data.</td>
+</tr>
+<tr>
+<td>16#09B0</td>
+<td>16#000E</td>
+<td>Timeout. No response to the sent PDI READ request received.</td>
+</tr>
+<tr>
+<td>16#09B0</td>
+<td>16#000F</td>
+<td>An internal error has occurred.</td>
+</tr>
+</tbody>
+</table>
+<p><br> When receiving a negative confirmation as response to a PDI_READ
+request, the Axioline module directly copies the received error code
+(Error_Code and Add_Info) to STATUS[0] or STATUS[1]. These error codes
+are module-specific. For a description see the respective module
+documentation. <br></p>
+</section>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if PDI_WRITE is used in your library ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="pdi_write" class="block">
+<h2>PDI_WRITE</h2>
+<p>ERROR = TRUE</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr>
+<th>STATUS[0]</th>
+<th>STATUS[1]</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#09B0</td>
+<td>16#000A</td>
+<td>The variable connected to SD_1 is invalid (no array or invalid array
+type). Connected to SD_1, greater than the maximum allowed length (245
+bytes) or equal to zero.</td>
+</tr>
+<tr>
+<td>16#09B0</td>
+<td>16#0009</td>
+<td>Invalid value at DATA_CNT input. The value is greater than the array
+size.</td>
+</tr>
+<tr>
+<td>16#09B0</td>
+<td>16#000E</td>
+<td>Timeout. No response to the sent PDI WRITE request received.</td>
+</tr>
+<tr>
+<td>16#09B0</td>
+<td>16#000F</td>
+<td>An internal error has occurred.</td>
+</tr>
+</tbody>
+</table>
+<p><br> When receiving a negative confirmation as response to a
+PDI_WRITE request, the Axioline module directly copies the received
+error code (Error_Code and Add_Info) to STATUS[0] or STATUS[1]. These
+error codes are module-specific. For a description see the respective
+module documentation. <br></p>
+</section>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if RDREC is used in your library ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="rdrec" class="block">
+<h2>RDREC</h2>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr>
+<th>Error code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#0000</td>
+<td>No error occurred.</td>
+</tr>
+<tr>
+<td>16#F001</td>
+<td>Too many instances used.</td>
+</tr>
+<tr>
+<td>16#F002</td>
+<td>Error during initialization of the function block.</td>
+</tr>
+<tr>
+<td>16#F003</td>
+<td>Invalid ID.</td>
+</tr>
+<tr>
+<td>16#F004</td>
+<td>Invalid HANDLE/ID.</td>
+</tr>
+<tr>
+<td>16#F005</td>
+<td>Resources conflict.</td>
+</tr>
+<tr>
+<td>16#F006</td>
+<td>A function block internal task could not be generated.</td>
+</tr>
+<tr>
+<td>16#F007</td>
+<td>Too many instances used.</td>
+</tr>
+<tr>
+<td>16#F008</td>
+<td>Invalid type of a parameter.</td>
+</tr>
+<tr>
+<td>16#F009</td>
+<td>Invalid parameter value.</td>
+</tr>
+<tr>
+<td>16#F00A</td>
+<td>Invalid parameter.</td>
+</tr>
+<tr>
+<td>16#F00B</td>
+<td>Invalid length specified.</td>
+</tr>
+<tr>
+<td>16#F00C</td>
+<td>ID could not be created (too many IDs).</td>
+</tr>
+<tr>
+<td>16#F00D</td>
+<td>No entry found that matches the specified ID.</td>
+</tr>
+<tr>
+<td>16#F00F</td>
+<td>No further entries found.</td>
+</tr>
+<tr>
+<td>16#F010</td>
+<td>Entry in use.</td>
+</tr>
+<tr>
+<td>16#F011</td>
+<td>Alarm acknowledgment could not be done.</td>
+</tr>
+<tr>
+<td>16#F012</td>
+<td>Error reading the AR parameters (1st time).</td>
+</tr>
+<tr>
+<td>16#F013</td>
+<td>Negative acknowledgment received for the execution of a PROFINET
+service.</td>
+</tr>
+<tr>
+<td>16#F014</td>
+<td>Invalid length for parameter LEN/MLEN or/and RECORD data record too
+short.</td>
+</tr>
+<tr>
+<td>16#F015</td>
+<td>The service used to read the RECORD data record could not be
+run.</td>
+</tr>
+<tr>
+<td>16#F016</td>
+<td>The service used to write the RECORD data record could not be
+run.</td>
+</tr>
+<tr>
+<td>16#F017</td>
+<td>Service acknowledgment not received.</td>
+</tr>
+<tr>
+<td>16#F018</td>
+<td>Invalid INDEX used to access the RECORD data record of the IO
+device, for example, INDEX greater than 16#7FFF.</td>
+</tr>
+<tr>
+<td>16#F019</td>
+<td>Unknown command code.</td>
+</tr>
+<tr>
+<td>16#F01A</td>
+<td>Error starting the Application Relation (AR).</td>
+</tr>
+<tr>
+<td>16#F01B</td>
+<td>Error stopping the Application Relation (AR).</td>
+</tr>
+<tr>
+<td>16#F01C</td>
+<td>Notification of stopped Application Relation (AR) failed.</td>
+</tr>
+<tr>
+<td>16#F01D</td>
+<td>Setting the “Drive BF” flag failed.</td>
+</tr>
+<tr>
+<td>16#F01E</td>
+<td>Error reading the AR parameters (2nd time).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if RDREC is used in your library ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="wrrec" class="block">
+<h2>WRREC</h2>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr>
+<th>Error code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#0000</td>
+<td>No error occurred.</td>
+</tr>
+<tr>
+<td>16#F001</td>
+<td>Too many instances used.</td>
+</tr>
+<tr>
+<td>16#F002</td>
+<td>Error during initialization of the function block.</td>
+</tr>
+<tr>
+<td>16#F003</td>
+<td>Invalid ID.</td>
+</tr>
+<tr>
+<td>16#F004</td>
+<td>Invalid HANDLE/ID.</td>
+</tr>
+<tr>
+<td>16#F005</td>
+<td>Resources conflict.</td>
+</tr>
+<tr>
+<td>16#F006</td>
+<td>A function block internal task could not be generated.</td>
+</tr>
+<tr>
+<td>16#F007</td>
+<td>Too many instances used.</td>
+</tr>
+<tr>
+<td>16#F008</td>
+<td>Invalid type of a parameter.</td>
+</tr>
+<tr>
+<td>16#F009</td>
+<td>Invalid parameter value.</td>
+</tr>
+<tr>
+<td>16#F00A</td>
+<td>Invalid parameter.</td>
+</tr>
+<tr>
+<td>16#F00B</td>
+<td>Invalid length specified.</td>
+</tr>
+<tr>
+<td>16#F00C</td>
+<td>ID could not be created (too many IDs).</td>
+</tr>
+<tr>
+<td>16#F00D</td>
+<td>No entry found that matches the specified ID.</td>
+</tr>
+<tr>
+<td>16#F00F</td>
+<td>No further entries found.</td>
+</tr>
+<tr>
+<td>16#F010</td>
+<td>Entry in use.</td>
+</tr>
+<tr>
+<td>16#F011</td>
+<td>Alarm acknowledgment could not be done.</td>
+</tr>
+<tr>
+<td>16#F012</td>
+<td>Error reading the AR parameters (1st time).</td>
+</tr>
+<tr>
+<td>16#F013</td>
+<td>Negative acknowledgment received for the execution of a PROFINET
+service.</td>
+</tr>
+<tr>
+<td>16#F014</td>
+<td>Invalid length for parameter LEN/MLEN or/and RECORD data record too
+short.</td>
+</tr>
+<tr>
+<td>16#F015</td>
+<td>The service used to read the RECORD data record could not be
+run.</td>
+</tr>
+<tr>
+<td>16#F016</td>
+<td>The service used to write the RECORD data record could not be
+run.</td>
+</tr>
+<tr>
+<td>16#F017</td>
+<td>Service acknowledgment not received.</td>
+</tr>
+<tr>
+<td>16#F018</td>
+<td>Invalid INDEX used to access the RECORD data record of the IO
+device, for example, INDEX greater than 16#7FFF.</td>
+</tr>
+<tr>
+<td>16#F019</td>
+<td>Unknown command code.</td>
+</tr>
+<tr>
+<td>16#F01A</td>
+<td>Error starting the Application Relation (AR).</td>
+</tr>
+<tr>
+<td>16#F01B</td>
+<td>Error stopping the Application Relation (AR).</td>
+</tr>
+<tr>
+<td>16#F01C</td>
+<td>Notification of stopped Application Relation (AR) failed.</td>
+</tr>
+<tr>
+<td>16#F01D</td>
+<td>Setting the “Drive BF” flag failed.</td>
+</tr>
+<tr>
+<td>16#F01E</td>
+<td>Error reading the AR parameters (2nd time).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if TCP/UDP blocks are used in your library ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section
+id="tcp_socket-tcp_read-tcp_write-udp_socket-udp_read-udp_write"
+class="block">
+<h2>TCP_SOCKET, TCP_READ, TCP_WRITE, UDP_SOCKET, UDP_READ,
+UDP_WRITE</h2>
+<p>ERROR = FALSE</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr>
+<th>Error code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#0000</td>
+<td>Situation is normal (no error).</td>
+</tr>
+<tr>
+<td>16#8000</td>
+<td>Socket is attempting to connect to the partner.</td>
+</tr>
+<tr>
+<td>16#8001</td>
+<td>Server is listening for a client.</td>
+</tr>
+<tr>
+<td>16#8002</td>
+<td>Server has rejected a client because the IP address and port number
+do not match.</td>
+</tr>
+<tr>
+<td>16#8003</td>
+<td>Not all data could be sent. Remaining data will be sent in the next
+cycle(s).</td>
+</tr>
+<tr>
+<td>16#8004</td>
+<td>Not all data received: Received length &lt; Expected length</td>
+</tr>
+</tbody>
+</table>
+</section>
+<div class="block">
+<p>ERROR = TRUE</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 71%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Error code</th>
+<th>Meaning</th>
+<th>Error only for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16#C001</td>
+<td>Socket creation failed.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C002</td>
+<td>IP has wrong format.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C003</td>
+<td>Memory allocation failed.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C100</td>
+<td>Unexpected error during connecting of a client to a server.</td>
+<td>TCP/TLS_SOCKET</td>
+</tr>
+<tr>
+<td>16#C101</td>
+<td>Unexpected error during receive operation.</td>
+<td>UDP/TCP/TLS_RECEIVE</td>
+</tr>
+<tr>
+<td>16#C102</td>
+<td>Unexpected error during send operation.</td>
+<td>UDP/TCP/TLS_SEND</td>
+</tr>
+<tr>
+<td>16#C103</td>
+<td>Unexpected error during bind operation.</td>
+<td>UDP_SOCKET</td>
+</tr>
+<tr>
+<td>16#C104</td>
+<td>Unexpected error during listen operation.</td>
+<td>TCP/TLS_SOCKET</td>
+</tr>
+<tr>
+<td>16#C105</td>
+<td>Unexpected error during accept operation.</td>
+<td>TCP/TLS_SOCKET</td>
+</tr>
+<tr>
+<td>16#C150</td>
+<td>The TLS parameterization of the TLS_SEND/TLS_RECEIVE function blocks
+is inconsistent with the TLS_SOCKET function block. This is the case
+when:<br><br>• TLS_SEND/TLS_RECEIVE require secure
+transmission/reception of data
+(<code>SEND_SECURE</code>/<code>RECEIVE_SECURE</code> = TRUE), but the
+socket is not yet initialized for TLS communication
+(<code>START_TLS</code> = FALSE).<br>• TLS_SEND/TLS_RECEIVE require
+insecure transmission/reception of data
+(<code>SEND_SECURE</code>/<code>RECEIVE_SECURE</code> = FALSE), but the
+socket is already initialized for TLS communication
+(<code>START_TLS</code> = TRUE).</td>
+<td>TLS_~</td>
+</tr>
+<tr>
+<td>16#C151</td>
+<td>An error regarding the <code>START_TLS</code> input of the
+<code>TLS_SOCKET</code> function block has occurred.
+<code>START_TLS</code> was set from TRUE to FALSE during opened TLS
+socket (<code>ACTIVE</code> = TRUE).</td>
+<td>TLS_SOCKET</td>
+</tr>
+<tr>
+<td>16#C201</td>
+<td>There are too many open sockets in the underlying socket
+provider.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C202</td>
+<td>An operation on a nonblocking socket cannot be completed
+immediately.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C204</td>
+<td>The datagram is too long.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C205</td>
+<td>Only one use of an address is normally permitted.<br><br>In case of
+a TCP or TLS connection, this error code can be emitted when a rising
+edge is detected at the <code>ACTIVATE</code> input while the
+<code>ACTIVE</code> and <code>BUSY</code> outputs both are still not
+FALSE (i.e., a new connection is requested while the previous socket
+termination is not yet completed).<br>This error also occurs if the
+controller is switched to STOP and afterwards to the RUN state as this
+terminates established connections.<br>This error is also emitted if a
+TCP/TLS server shall listen to several clients. To avoid this error use
+the newer FB generation <code>TLS_~_2</code>.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C206</td>
+<td>The selected IP address is not valid in this context.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C207</td>
+<td>The connection was aborted by the .NET Framework or the underlying
+socket provider.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C208</td>
+<td>The connection was reset by the remote peer.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C210</td>
+<td>The application tried to send or receive data, and the socket is not
+connected.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C211</td>
+<td>No such host is known. The name is not an official host name or
+alias.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C212</td>
+<td>An internal error occurred with unclear reason. On controllers up to
+firmware 2019.3 one cause for this error is an empty CipherList. Another
+known cause is trying to send a UDP datagram to a broadcast address
+(255.255.255.255) using the UDP_SEND or UDP_SEND_2 function block. In
+case the error is thrown for the UDP_SEND_2 FB, ensure that the gateway
+in your IP configuration is set to a valid address (address 0.0.0.0 is
+invalid and treated as a missing gateway). (It is not required that the
+network contains a device with the configured gateway address.)</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C213</td>
+<td>The remote host is actively refusing a connection. The service is
+not available on the remote host.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C214</td>
+<td>- Parameters like CipherList, TrustStoreName and IdentityStoreName
+are invalid or missing. <br> - An invalid port number was
+specified.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C215</td>
+<td>A blocking operation is in progress.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C216</td>
+<td>The overlapped operation was aborted due to the closure of the
+System.Net.Sockets.Socket.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C217</td>
+<td>The application has initiated an overlapped operation that cannot be
+completed immediately.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C218</td>
+<td>A blocking System.Net.Sockets.Socket call was canceled.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C219</td>
+<td>An attempt was made to access a System.Net.Sockets.Socket in a way
+that is forbidden by its access permissions.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C21A</td>
+<td>An invalid pointer address was detected by the underlying socket
+provider.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C21B</td>
+<td>A System.Net.Sockets.Socket operation was attempted on a
+non-socket.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C21C</td>
+<td>A required address was omitted from an operation on a
+System.Net.Sockets.Socket.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C21D</td>
+<td>An unknown, invalid, or unsupported option or level was used with a
+System.Net.Sockets.Socket.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C21E</td>
+<td>The protocol type is incorrect for this
+System.Net.Sockets.Socket.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C21F</td>
+<td>The protocol is not implemented or has not been configured.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C220</td>
+<td>The support for the specified socket type does not exist in this
+address family.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C221</td>
+<td>The address family is not supported by the protocol family.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C222</td>
+<td>The protocol family is not implemented or has not been
+configured.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C223</td>
+<td>The address family specified is not supported. This error is
+returned if the IPv6 address family was specified and the IPv6 stack is
+not installed on the local machine. This error is returned if the IPv4
+address family was specified and the IPv4 stack is not installed on the
+local machine.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C224</td>
+<td>Network is down.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C225</td>
+<td>Network unreachable.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C226</td>
+<td>Network dropped connection on reset.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C227</td>
+<td>No free buffer space is available for a System.Net.Sockets.Socket
+operation.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C228</td>
+<td>A request to send or receive data was disallowed because the Socket
+has already been closed.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C229</td>
+<td>The connection attempt timed out, or the connected host has failed
+to respond.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C22A</td>
+<td>The operation failed because the remote host is down.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C22B</td>
+<td>There is no network route to the specified host. Could not connect
+to DEST_IP.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C22C</td>
+<td>Too many processes are using the underlying socket provider.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C22D</td>
+<td>The network subsystem is unavailable.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C22E</td>
+<td>The version of the underlying socket provider is out of range.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C22F</td>
+<td>The underlying socket provider has not been initialized.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C230</td>
+<td>A graceful shutdown is in progress.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C231</td>
+<td>The specified class was not found.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C232</td>
+<td>The name of the host could not be resolved. Try again later.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C233</td>
+<td>The error is unrecoverable or the requested database cannot be
+located.</td>
+<td></td>
+</tr>
+<tr>
+<td>16#C234</td>
+<td>The requested name or IP address was not found on the name
+server.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if FILE_OPEN blocks are used in your library ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="file_open" class="block">
+<h2>FILE_OPEN</h2>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr>
+<th>Error ID</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>No error information available.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The maximum number of files is already open.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>The file is already open.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>File is write protected or access denied.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>File name not defined.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if FILE_SEEK blocks are used in your library ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="file_seek" class="block">
+<h2>FILE_SEEK</h2>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr>
+<th>Error ID</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>No error information available.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Invalid file handle.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Invalid positioning mode or position specified is before the
+beginning of the file.</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Position could not be set.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if FILE_READ blocks are used in your library ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="file_read" class="block">
+<h2>FILE_READ</h2>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr>
+<th>Error ID</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>No error information available.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Invalid file handle.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>End of data reached.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>The number of characters to be read is greater than the data
+buffer.</td>
+</tr>
+<tr>
+<td>22</td>
+<td>No data could be read.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if FILE_CLOSE blocks are used in your library ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="file_close" class="block">
+<h2>FILE_CLOSE</h2>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr>
+<th>Error ID</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>No error information available.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Invalid file handle.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>File could not be closed.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Keep this chapter, if STRING_TO_BUF blocks are used in your library ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="string_to_buf" class="block">
+<h2>STRING_TO_BUF</h2>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>The copy process has been finished correctly.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>The VAR_IN_OUT descriptors used for the parameter SRC and BUFFER are
+invalid. This is an internal error.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The length of the source buffer does not fit. The size of bytes to
+be copied assigned in BUF_CNT is larger than the available size of the
+SRC.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The length of the destination buffer does not fit. The sum of the
+bytes to be copied assigned in BUF_CNT and the offset in the connected
+byte stream assigned in BUF_OFFS is larger than the size of the
+connected byte stream.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>This data type is not supported.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The alignment does not fit to this data type. The size to be copied
+assigned in BUF_CNT must be divisible without remainder by the size of
+the data type.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The conversion INTEL/MOTOROLA (Little-/Big-Endian) has failed.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>The string length does not fit. Additional checks are necessary for
+the data type string.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>The destination buffer has a wrong data type. In some cases the data
+type is checked. This is described in the special chapter for each data
+type.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>The offset value is not correct. In some cases the offset is
+checked. This is described in the special chapter for each data
+type.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>The BUF_CNT does not fit. In some cases the size to be copied is
+checked.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>The addresses of the source and the destination are the same.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+<div class="pagebreak">
+
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Third-party licenses ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Keep this file, if you use third-party code in your library *** -->
+<div id="licenses" class="main">
+<h1 id="third-party-licenses">Third-party licenses</h1>
+<!-- *** According to the PLCnext Store Info Center, all third‑party licenses must be provided in one single 
+         file named "license.txt". This file must be uploaded to the PLCnext Store under "Documents". *** -->
+<!-- *** Introduction text - Do NOT change *** -->
+<p>This software makes use of third-party packages with different
+licenses.</p>
+<p>The software packages and the licenses are listed in this
+chapter.</p>
+<!-- *** Change table content here: *** -->
+<table>
+<thead>
+<tr>
+<th>Software (package) name</th>
+<th>License type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Software A</td>
+<td>MIT license</td>
+</tr>
+<tr>
+<td>Software B</td>
+<td>BSD license</td>
+</tr>
+<tr>
+<td>Software C</td>
+<td>GPL license</td>
+</tr>
+</tbody>
+</table>
+<p>The corresponding license texts are available in the text file
+<strong>license.txt</strong> on the library page within the PLCnext
+Store, under the “Documents” section.</p>
+</div>
+<div class="pagebreak">
+
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~ Keep this file in the case of known issues here ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="known_issues" class="main">
+<h1 id="known-issues">Known issues</h1>
+<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
+est Lorem ipsum dolor sit amet.</p>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Startup example(s) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<div id="example" class="main">
+<h1 id="startup-examples">Startup example(s)</h1>
+<!-- *** Adjust list after introduction sentence: *** -->
+<p>For the startup instructions of the library function blocks, please
+find the following examples:</p>
+<ul>
+<li>LIBID_EXA_Name.pcwex</li>
+<li>…</li>
+</ul>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Description of example 1 -> Adjust content: *** -->
+<section id="description-of-libid_exa_name.pcwex" class="block">
+<h2>Description of LIBID_EXA_Name.pcwex</h2>
+<p>This startup example demonstrates …</p>
+<p><strong>Required hardware:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item designation</th>
+<th>Item no.</th>
+<th>Firmware version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AXC F 2152</td>
+<td>2404267</td>
+<td>2026.0 LTS</td>
+</tr>
+<tr>
+<td>AXL SE RS232</td>
+<td>1181787</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>PLCnext Engineer version:</strong> 2026.0 LTS</p>
+</section>
+<div class="block">
+<p>For starting the ExampleMachine function block, <em>xStart</em> input
+must be set to TRUE.</p>
+<p><img src="./_images/startup_example.png">
+<!-- Screenshot with online values --></p>
+<p>For the source code, please open the associated PLCnext Engineer
+project.</p>
+</div>
+<div class="pagebreak">
+
+</div>
+<hr />
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- *** Description of example 2 -> Adjust content: *** -->
+<section id="description-of" class="block">
+<h2>Description of …</h2>
+<p>This startup example demonstrates …</p>
+<p><strong>Required hardware:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item designation</th>
+<th>Item no.</th>
+<th>Firmware version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AXC F 2152</td>
+<td>2404267</td>
+<td>2026.0 LTS</td>
+</tr>
+<tr>
+<td>AXL SE RS232</td>
+<td>1181787</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>PLCnext Engineer version:</strong> 2026.0 LTS</p>
+</section>
+<div class="block">
+<p>For starting the ExampleMachine function block, <em>xStart</em> input
+must be set to TRUE.</p>
+<p><img src="./_images/startup_example.png">
+<!-- Screenshot with online values --></p>
+<p>For the source code, please open the associated PLCnext Engineer
+project.</p>
+</div>
+<div class="pagebreak">
+
+</div>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Support ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<section id="support" class="main">
+<h1>Support</h1>
+<!-- *** Change company name and email address here *** -->
+<p>For technical support, please contact: Company_Name</p>
+<p>E-Mail: support@your-company.com</p>
+<!-- For technical support please contact your local PHOENIX CONTACT agency <br>
+at [https://www.phoenixcontact.com](https://www.phoenixcontact.com)  <br> -->
+<!-- *** Keep the following text *** -->
+<p><strong>In case of a support request, we need:</strong></p>
+<ul>
+<li>Development system with:
+<ul>
+<li>Name (e.g., PC Worx, PLCnext Engineer)</li>
+<li>Version (e.g., PLCnext Engineer 2022.0.1 LTS)</li>
+</ul></li>
+<li>Bus structure / plant including all articles with
+<ul>
+<li>Name</li>
+<li>Order number</li>
+<li>Firmware version</li>
+<li>External components</li>
+</ul></li>
+<li>Used libraries with:
+<ul>
+<li>Name</li>
+<li>Version (e.g., IOL_Basic_7)</li>
+</ul></li>
+</ul>
+<p><br></p>
+</section>
+<script>
+/* ------------------------------------------------
+   Expand / collapse level-2 navigation (FIXED)
+-------------------------------------------------- */
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  // hide all sub-lists initially
+  document.querySelectorAll("#toc li > ul, #toc li > ol")
+    .forEach(list => list.style.display = "none");
+
+  // attach click handler to ALL TOC links
+  document.querySelectorAll("#toc a").forEach(link => {
+    link.addEventListener("click", function (event) {
+       event.preventDefault();
+
+      const targetId = link.getAttribute("href").substring(1);
+
+      // toggle submenu if present
+      const li = link.closest("li");
+      const subList = li.querySelector(":scope > ul, :scope > ol");
+      if (subList) {
+        subList.style.display =
+          subList.style.display === "block" ? "none" : "block";
+      }
+
+      // ✅ ALWAYS open the chapter
+      if (targetId) {
+        showChapter(targetId);
+        history.replaceState(null, "", "#" + targetId);
+      }
+    });
+  });
+});
+
+</script>
+</body>
+</html>

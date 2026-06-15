@@ -35,13 +35,15 @@ To achieve this, the template provides Markdown template files, a ready-to-use b
 
 # Table of contents
 
-1. [Required software](#required_sw)
-2. [Known issues](#known_issues)
-3. [Creation of the documentation](#creation)
-4. [Integration as HTML context-sensitive help in PLCnext Engineer](#import)
-5. [Additional tips](#tips)<br>
-    5.1. [Template-related tips](#template-related_tips)<br>
-    5.2. [Tips for Visual Studio Code](#vsc_tips)
+- [Template\_Library\_Documentation](#template_library_documentation)
+- [Table of contents](#table-of-contents)
+- [Required software](#required-software)
+- [Known issues](#known-issues)
+- [Creation of the documentation](#creation-of-the-documentation)
+- [Integration as HTML context-sensitive help in PLCnext Engineer](#integration-as-html-context-sensitive-help-in-plcnext-engineer)
+- [Additional Tips](#additional-tips)
+  - [Template-related tips](#template-related-tips)
+  - [Tips for Visual Studio Code](#tips-for-visual-studio-code)
 
 --------------------------------
 
@@ -142,7 +144,9 @@ Follow these steps to build your documentation:
 
     The output files are available in the folders "**html**" and "**pdf**". 
      - In "**html**" you will find a general documentation file, which has the name of your library. In addition, there are HTML files for each function, function block or HMI symbol in the "**Components**" folder. These HTML files can be used in PLCnext Engineer to provide component-related context help.
-     **Please note**: These component-related HTML files cannot be displayed directly in a web browser. They serve as redirects to the corresponding sections within the full HTML documentation and function only after integration in PLCnext Engineer.
+     
+     <div style="border: 1px solid #ffffff; padding: 10px 10px 10px 10px;"> <span style="color:#FFA500;"><strong>Please note</strong></span>: These component-related HTML files cannot be displayed directly in a web browser. They serve as redirects to the corresponding sections within the full HTML documentation and function only after integration in PLCnext Engineer.</div><bR>
+
      - In "**pdf**" the complete documentation in PDF format can be found.
 
 </div>

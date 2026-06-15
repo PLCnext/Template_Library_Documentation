@@ -1,0 +1,33 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Automatic Redirect</title> 
+    <script> 
+        // *** Change POU name here: 
+        const pou_name = "LIBID_My_FB1_1"; 
+        let dots = ""; 
+        let dotElement; 
+        window.onload = function() { 
+            dotElement = document.getElementById("dots"); 
+            let i = 0; 
+            let dotInterval = setInterval(function() { 
+                if (i < 3) { 
+                    dots += "."; 
+                    dotElement.textContent = dots; 
+                    i++; 
+                } else { 
+                    clearInterval(dotInterval); 
+                } 
+            }, 300); 
+        }; 
+        setTimeout(function() { 
+            window.location.href = `./Overview.htm#${pou_name}`; 
+        }, 1000); 
+    </script> 
+</head> 
+<body> 
+    <h1>You will be redirected<span id="dots"></span></h1> 
+    <p>If the redirect does not work, please click <a href="./Overview.htm" onclick="location.href=this.href+'#'+pou_name;return false;">here</a>.</p> 
+</body> 
+</html> 

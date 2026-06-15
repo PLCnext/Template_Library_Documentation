@@ -1,0 +1,456 @@
+/* Font ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhdzeFb5N.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  }
+  /* cyrillic */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhdXeFb5N.woff2) format('woff2');
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  /* greek */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhdLeFb5N.woff2) format('woff2');
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+  }
+  /* vietnamese */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhd7eFb5N.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+  }
+  /* latin-ext */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhd_eFb5N.woff2) format('woff2');
+    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhdHeFQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+/* Body ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+BODY {
+color: #000000;
+font-family: 'IBM Plex Sans';
+font-size: 14px;
+text-align: left;
+background-color: #FFFFFF;
+padding-top: 0px;
+padding-right: 0px;
+padding-left: 0px;
+margin-top: 30px;
+margin-right: 1px;
+margin-left: 25px;
+width:96%;
+color: #1D1D1B;
+letter-spacing: 0;
+line-height: 20px;
+font-weight: 400;
+}
+
+/* Main page/div ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.main {
+    margin-left: 30%;
+    margin-top: 50px;
+    display: none;
+}
+
+.main.active {
+      display: block;
+}
+
+.main a:link {
+text-decoration: none; 
+color: #0098A1;
+font-weight: 400;
+
+}
+
+.main a:visited {
+color: #0098A1;
+}
+
+.main a:hover {
+text-decoration: underline;
+color: #0098A1;
+font-weight: 400;
+}
+
+/* Header ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+div.header {
+    background-color: #FFFFFF;
+    background-image: linear-gradient(46deg, #95BD0D 0%, #1AA1AA 100%);
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    height: 70px;
+}
+
+div.header H1 {
+    color: #ffffff;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+header .title{
+    visibility : hidden;
+}
+
+div.logo img{
+    position: revert;
+    float: right;
+    max-width: 150px;
+    margin-top: 10px;
+}
+
+section.header {
+    position: fixed;
+    margin-top: -70px;
+    font-size: 30px;
+}
+
+section.header H1{
+    color: #ffffff;
+    font-size: 30px;
+}
+
+/* Intro (startpage) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.intro {
+    margin-left: 30%;
+    margin-top: 50px;
+    display: none;
+}
+
+.intro.active {
+      display: block;
+}
+
+/* Navigation (TOC) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+nav {
+    position: fixed;
+    float: left;
+    margin-right: 100px;
+    background-color: #F6F7F9;
+    width: 27%;
+    overflow: scroll;
+    height: 90%;
+}
+
+nav H2 {
+    margin-left : 20px;
+}
+
+nav ul {
+    margin-left : -20px;
+    list-style-type : none;
+}
+
+nav .li::marker{
+    visibility : hidden;
+}
+
+nav a:link {
+    text-decoration: none; 
+    color: #1D1D1B;
+    font-weight: 400;
+}
+    
+nav a:visited {
+    text-decoration: none;
+    color: #1D1D1B;
+}
+    
+nav a:hover {
+    text-decoration: underline;
+    color: #0098A1;
+    font-weight: 400;
+}
+
+.toc ol {
+      list-style-type: decimal;
+      padding-left: 20px;
+}
+
+.toc ol ol{
+      list-style-type: disc;
+      padding-left: 20px;
+}
+
+/* Base styling for TOC links */
+#toc li > a {
+  position: relative;
+  padding-left: 22px;
+}
+
+/* Arrow (collapsed state) */
+#toc li:has(> ul) > a::before,
+#toc li:has(> ol) > a::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+/* Expanded state (sublist visible) */
+#toc li:has(> ul[style*="block"]) > a::before,
+#toc li:has(> ol[style*="block"]) > a::before {
+  content: "▼";
+}
+
+#toc li > ul > li> a {
+    padding-left: 0px;
+}
+
+/* Base formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+H1 {
+    font-size: 24px;
+    color: #1D1D1B;
+    text-align: left;
+    margin-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    padding-right: 5px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+H2 {
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-right: 6pt;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    padding-right: 5px;
+    border-color: black;
+    color: #1D1D1B;
+    letter-spacing: 1.5px;
+    text-align: left;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+p {
+    margin-top: 6pt;
+    margin-right: 6pt;
+    font-size: 14px;
+    color: #1D1D1B;
+    letter-spacing: 0;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+/* List formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+UL {
+list-style-type: disc;
+margin-left: -25px;
+}
+
+UL UL{
+list-style-type: circle;
+}
+
+OL OL {
+list-style-type: lower-alpha;
+}
+
+OL UL{
+list-style-type: circle;
+}
+
+
+UL OL {
+list-style-type: lower-alpha;
+}
+
+OL LI {
+font-size: 14px;
+color: #1D1D1B;
+letter-spacing: 0;
+line-height: 20px;
+font-weight: 400;
+padding: 0 0 5px 14px;
+margin-left: 15px;
+}
+
+UL > UL > LI {
+    font-size: 14px;
+    color: #1D1D1B;
+    letter-spacing: 0;
+    line-height: 20px;
+    font-weight: 400;
+    background-position: 0px 5px;
+    padding: 0 0 5px 30px;
+}
+
+ol > li::marker {
+    font-weight: bold;
+}
+
+/* Message blocks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.notetext {
+    padding-left: 25px;
+    padding-top: 20px;
+    padding-right: 32px;
+    padding-bottom: 20px;
+    font-size: 14px;
+    color: #1D1D1B;
+    letter-spacing: 0;
+    line-height: 20px;
+    font-weight: 400;
+    background-color:#EDF0F3;
+}
+
+.noteheadertext {
+    font-size: 24px;
+    text-align:center;
+    background-color: #004488;
+    padding:4px;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.dangerheadertext {
+    font-size: 24px;
+    color:#FFFFFF;
+    text-align:center;
+    vertical-align:middle;
+    background-color: #BD2024;
+    padding:4px;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.cautionheadertext {
+    font-size: 24px;
+    color: #1D1D1B;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-align:center;
+    vertical-align:middle;
+    background-color: #FFE100;
+    padding: 4px;
+}
+
+.warningheadertext {
+    font-size: 24px;
+    color: #1D1D1B;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-align:center;
+    vertical-align:middle;
+    background-color: #FF7900;
+    padding:4px;
+}
+
+/* Table formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+table {
+    border: 1px solid #E5E5E5;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    width: 95%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #EDF0F3;
+    padding-top: 8px;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    font-weight: bold;
+    border-right: 1px #E0E0E0 solid;
+    border-bottom: 1px #1D1D1B  solid;
+    vertical-align: top;
+    text-align: left; 
+    font-size: 16px;
+    color: #1D1D1B;
+    letter-spacing: 1px;
+    line-height: 16px;
+    font-weight: 700;
+}
+
+th a{
+    font-weight: bold;
+}
+    
+tr { 
+    vertical-align: top;
+}
+
+tr:has(td):not(:has(td:not(:empty))) {
+  background-color: #EDF0F3;
+}
+
+td {
+    padding-top: 6px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    border: 1px outset;
+    border-right: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    vertical-align: top;
+    color: #000000;
+    text-align: left;
+    font-size: 14px;
+    color: #1D1D1B;
+    letter-spacing: 0;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+/* Seperator (line) formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+hr {
+    margin-top: 15px;
+    background-color: #A2A7A9;
+    height: 2px;
+    border-style: hidden;
+    max-width: 90%;
+    margin-left: 0px;
+}
