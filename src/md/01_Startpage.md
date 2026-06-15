@@ -1,18 +1,63 @@
-<div class="startpage">
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Library name ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-<!-- *** Change library name here: *** -->
-# <a class="link" name="Startpage">My_Library</a>
+<!-- *** Change library name here (use an ID for your library as prefix, e.g. "MB" for Modbus): *** -->
 
-Function block library for PLCnext Engineer
+<div class="header">
 
-Documentation for </br>
-PHOENIX CONTACT function blocks </br>
+# LIBID_LibName
+
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Company logo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- *** Change logo path here or overwrite the existing logo image *** -->
+
+<div class="logo">
+
+<img src="./_images/company_logo.png"> <!-- *** For libraries from Phoenix Contact use: ./_images/pxc_logo.png *** -->
+
+</div>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Intro (general information) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<div id="startpage" class="intro">
+
+# Function block library for PLCnext Engineer
+
+<br>
+
+<!-- *** Adjust information here: *** -->
+
+**Library version:** 2.0.0 <!-- Library version format: Major.Minor.Patch --> <br>
+
+**Document revision:** 2.20 <br>
+
+**Release date:** 2026-04-30 <br>
+
+This documentation is available in English only. <br>
+
+---
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- Company address ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
 <!-- *** Change address here: *** -->
-PHOENIX CONTACT GmbH & Co. KG </br>
-Flachsmarktstrasse 8 </br>
-D-32825 Blomberg, Germany </br>
 
-This documentation is available in English only. </br>
+**Your Company** <br>
+Company Street 123 <br>
+12345 City, Country <br>
+
+<!-- 
+PHOENIX CONTACT GmbH & Co. KG <br>
+Flachsmarktstrasse 8 <br>
+D-32825 Blomberg, Germany <br>
+-->
 
 </div>

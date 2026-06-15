@@ -1,4 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&amp;display=swap');
+/* Font ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* cyrillic-ext */
+@font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhdzeFb5N.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  }
+  /* cyrillic */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhdXeFb5N.woff2) format('woff2');
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  /* greek */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhdLeFb5N.woff2) format('woff2');
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+  }
+  /* vietnamese */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhd7eFb5N.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+  }
+  /* latin-ext */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhd_eFb5N.woff2) format('woff2');
+    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYXgKVElMYYaJe8bpLHnCwDKhdHeFQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+/* Body ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 BODY {
 color: #000000;
@@ -19,12 +70,36 @@ line-height: 20px;
 font-weight: 400;
 }
 
-:target:before {
-    content: "";
-    display: block;
-    height: 100px;
-    margin: -100px 0 0;
+/* Main page/div ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.main {
+    margin-left: 30%;
+    margin-top: 50px;
+    display: none;
 }
+
+.main.active {
+      display: block;
+}
+
+.main a:link {
+text-decoration: none; 
+color: #0098A1;
+font-weight: 400;
+
+}
+
+.main a:visited {
+color: #0098A1;
+}
+
+.main a:hover {
+text-decoration: underline;
+color: #0098A1;
+font-weight: 400;
+}
+
+/* Header ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 div.header {
     background-color: #FFFFFF;
@@ -33,26 +108,50 @@ div.header {
     width: 100%;
     left: 0px;
     top: 0px;
-    height: 8px;
+    height: 70px;
 }
 
-div.logo {
-    background-color: #FFFFFF;
-    width: 100%;
-    height: 10%;
+div.header H1 {
+    color: #ffffff;
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+header .title{
+    visibility : hidden;
+}
+
+div.logo img{
+    position: revert;
+    float: right;
+    max-width: 150px;
+    margin-top: 10px;
+}
+
+section.header {
     position: fixed;
-    margin-top: -65px;
+    margin-top: -70px;
+    font-size: 30px;
 }
 
-.main {
+section.header H1{
+    color: #ffffff;
+    font-size: 30px;
+}
+
+/* Intro (startpage) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.intro {
     margin-left: 30%;
     margin-top: 50px;
+    display: none;
 }
 
-.startpage {
-    margin-left: 30%;
-    margin-top: 50px; 
+.intro.active {
+      display: block;
 }
+
+/* Navigation (TOC) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 nav {
     position: fixed;
@@ -77,31 +176,60 @@ nav .li::marker{
     visibility : hidden;
 }
 
-header .title{
-    visibility : hidden;
+nav a:link {
+    text-decoration: none; 
+    color: #1D1D1B;
+    font-weight: 400;
+}
+    
+nav a:visited {
+    text-decoration: none;
+    color: #1D1D1B;
+}
+    
+nav a:hover {
+    text-decoration: underline;
+    color: #0098A1;
+    font-weight: 400;
 }
 
-.highlight {
-background: rgba(77,183,189,0.5);
+.toc ol {
+      list-style-type: decimal;
+      padding-left: 20px;
 }
 
-div.H1 {
-    font-size: 14px;
-    color: #AEC8D2;
-    font-weight: bold;
-    text-align: left;
-    position: absolute;
-    width: 100%;
-    left: 0px;
-    top: 0px;
-    height: 0px;
-    vertical-align: top;
-    background-position: center;
-    padding-top: 0px;
-    padding-left: 15px;
-    padding-bottom: 25px;
-    z-index: -1;
+.toc ol ol{
+      list-style-type: disc;
+      padding-left: 20px;
 }
+
+/* Base styling for TOC links */
+#toc li > a {
+  position: relative;
+  padding-left: 22px;
+}
+
+/* Arrow (collapsed state) */
+#toc li:has(> ul) > a::before,
+#toc li:has(> ol) > a::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+/* Expanded state (sublist visible) */
+#toc li:has(> ul[style*="block"]) > a::before,
+#toc li:has(> ol[style*="block"]) > a::before {
+  content: "▼";
+}
+
+#toc li > ul > li> a {
+    padding-left: 0px;
+}
+
+/* Base formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 H1 {
     font-size: 24px;
@@ -144,6 +272,8 @@ p {
     font-weight: 400;
 }
 
+/* List formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 UL {
 list-style-type: disc;
 margin-left: -25px;
@@ -158,7 +288,7 @@ list-style-type: lower-alpha;
 }
 
 OL UL{
-list-style-type: none;
+list-style-type: circle;
 }
 
 
@@ -173,38 +303,7 @@ letter-spacing: 0;
 line-height: 20px;
 font-weight: 400;
 padding: 0 0 5px 14px;
-margin-left: -8px;
-}
-
-UL > LI.contentlist {
-font-size: 14px;
-color: #1D1D1B;
-letter-spacing: 0;
-line-height: 20px;
-font-weight: 400;
-list-style-type: disc;
-background-position: 0px 5px;
-padding: 0 0 5px 24px;
-}
-
-UL  LI.contentlist  UL > LI.contentlist {
-    font-size: 14px;
-    color: #1D1D1B;
-    letter-spacing: 0;
-    line-height: 20px;
-    font-weight: 400;
-    background-position: 0px 5px;
-    padding: 0 0 5px 24px;
-}
-
-UL > LI.topiccontent {
-    font-size: 14px;
-    color: #1D1D1B;
-    letter-spacing: 0;
-    line-height: 20px;
-    font-weight: 400;
-    background-position: 0px 5px;
-    padding: 0 0 5px 24px;
+margin-left: 15px;
 }
 
 UL > UL > LI {
@@ -217,35 +316,11 @@ UL > UL > LI {
     padding: 0 0 5px 30px;
 }
 
-UL > LI.tablelist{
-    line-height: 20px;
-    margin-top: 8px;
-    margin-left: -3pt;
-    background-position: 0px 6px;
-    padding: 0 0 0px 30px;
+ol > li::marker {
+    font-weight: bold;
 }
 
-UL  UL  LI.tablelist{
-    line-height: 20px;
-    margin-top: 8px;
-    margin-left: -3pt;
-    background-position: 0px 6px;
-    padding: 0 0 0px 30px;
-}
-
-.Note {
-    font-size: 14px;
-    color: #1D1D1B;
-    letter-spacing: 0;
-    line-height: 20px;
-    text-align: left;
-    background-color: #EDF0F3;
-    padding-top: 16px;
-    padding-right: 32px;
-    padding-left: 32px;
-    padding-bottom: 20px;
-    margin-right: 6pt;
-}
+/* Message blocks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .notetext {
     padding-left: 25px;
@@ -258,27 +333,6 @@ UL  UL  LI.tablelist{
     line-height: 20px;
     font-weight: 400;
     background-color:#EDF0F3;
-}
-
-.tablefurtherinfotoplevel {
-    border: 1px solid #E1E5E9;
-    border-spacing: 0px 0px;
-    color: #1D1D1B;
-    margin-left: -25px;
-    width: 103%;
-}
-
-.furtherinfotext {
-    padding-left: 25px;
-    padding-top: 20px;
-    padding-right: 32px;
-    padding-bottom: 20px;
-    font-size: 14px;
-    color: #1D1D1B;
-    letter-spacing: 0;
-    line-height: 20px;
-    font-weight: 400;
-    border: 1px solid #E5E5E5;
 }
 
 .noteheadertext {
@@ -325,154 +379,25 @@ UL  UL  LI.tablelist{
     padding:4px;
 }
 
-.example {
-    font-family: "Courier New", Courier, mono;
-    font-size: 9pt;
-    font-style: normal;
-    color: #000000;
-    font-weight: normal;
-    border-style: none;
-}
-
-pre {
-    font-family: "Courier New", Courier, mono;
-    font-size: 9pt;
-    font-style: normal;
-    font-weight: normal;
-    color: #000000;
-}
-
-pre.example {
-    font-family: "Courier New", Courier, mono;
-    font-size: 11pt;
-    font-style: normal;
-    color: #0033CC;
-    font-weight: normal;
-    background-color: #FFFFFF;
-    border-color: black black black #FFCC00;
-    padding-top: 0px;
-    padding-right: 4px;
-    padding-bottom: 0px;
-    padding-left: 8px;
-    border-style: solid;
-    border-top-width: 0px;
-    border-right-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 3px;
-}
-
-pre div.comment {
-    font-family: "Courier New", Courier, mono;
-    font-size: 11pt;
-    font-style: normal;
-    color: #1e8609;
-    font-weight: normal;
-    background-color: #FFFFFF;
-    padding-top: 0px;
-    padding-right: 4px;
-    padding-bottom: 0px;
-    padding-left: 8px;
-}
+/* Table formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 table {
     border: 1px solid #E5E5E5;
     background-color: #FFFFFF;
     margin-top: 10px;
     margin-right: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 40px;
     margin-left: 10px;
     padding-top: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
-    min-width: 600px;
+    width: 95%;
     border-collapse: collapse;
-}
-
-
-table.border {
-    border: 1px solid #DDDDDD;
-    background-color: #FFFFFF;
-    margin-top: 10px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    padding-top: 6px;
-    padding-right: 20px;
-    padding-bottom: 6px;
-    padding-left: 0px;
-    border-spacing: 0px 0px;
-}
-
-table.no_border {
-    border: 0px solid #DDDDDD;
-    background-color: #FFFFFF;
-    margin-top: 10px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 10px;
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 10px;
-    font-size: 9pt;
-    border-left: 1px solid rgb(162, 167, 169);
-    min-width: 100px;
-}
-
-table.column_separator {
-    border: 0px solid #DDDDDD;
-    background-color: #FFFFFF;
-    margin-top: 30px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: -30px;
-    padding-top: 0px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    padding-left: 10px; 
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
-    border-collapse: collapse;
-}
-
-td.column_separator {
-    font-size: 14px; 
-    padding-top: 5px;
-    padding-right: 30px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    border-right: 1px solid #1D1D1B;
-    vertical-align: top;
-    line-height: 20px;
-    font-weight: 400;
-}
-
-table.column_separator tr td.column_separator { border: none; }
-table.column_separator tr td.column_separator:first-child { border-right: 1px solid #1D1D1B; }
-
-
-th.border {
-    background-color: #FFFFFF;
-    padding-top: 8px;
-    padding-right: 20px;
-    padding-bottom: 8px;
-    padding-left: 5px;
-    font-weight: bold;
-    border-right: 0px #E0E0E0 solid;
-    border-bottom: 1px #1D1D1B  solid;
-    vertical-align: top;
-    text-align: left; 
-    font-size: 14px;
-    color: #1D1D1B;
-    letter-spacing: 1px;
-    line-height: 16px;
-    font-weight: 700;
 }
 
 th {
-    background-color: #FFFFFF;
+    background-color: #EDF0F3;
     padding-top: 8px;
     padding-right: 20px;
     padding-bottom: 8px;
@@ -482,17 +407,24 @@ th {
     border-bottom: 1px #1D1D1B  solid;
     vertical-align: top;
     text-align: left; 
-    font-size: 14px;
+    font-size: 16px;
     color: #1D1D1B;
     letter-spacing: 1px;
     line-height: 16px;
     font-weight: 700;
+}
+
+th a{
+    font-weight: bold;
 }
     
 tr { 
     vertical-align: top;
 }
 
+tr:has(td):not(:has(td:not(:empty))) {
+  background-color: #EDF0F3;
+}
 
 td {
     padding-top: 6px;
@@ -512,210 +444,13 @@ td {
     font-weight: 400;
 }
 
-td.border {
-    padding-top: 6px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    padding-left: 5px;
-    border: 0px outset;
-    border-right: 0px solid #DDDDDD;
-    border-bottom: 1px solid #DDDDDD;
-    vertical-align: top;
-    color: #000000;
-    text-align: left;
-    font-size: 14px;
-    color: #1D1D1B;
-    letter-spacing: 0;
-    line-height: 20px;
-    font-weight: 400;
-}
-
-th.no_border {
-    background-color: #F1F1F1;
-    padding-top: 4px;
-    padding-right: 15px;
-    padding-bottom: 4px;
-    padding-left: 0px;
-    border: 0px;
-    font-weight: bold;
-    vertical-align: top;
-    text-align: left; 
-    font-size: 14px;
-}
-
-td.no_border {
-    font-size: 14px; 
-    padding-top: 5px;
-    padding-right: 15px;
-    padding-bottom: 4px;
-    padding-left: 10px;
-    border: 0px;
-    vertical-align: top;
-    line-height: 20px;
-}
-
-table.invisible { 
-    padding-top: 0px; 
-    padding-right: 0px; 
-    padding-bottom: 0px; 
-    padding-left: 0px; 
-    margin-top: 0px; 
-    margin-right: 0px; 
-    margin-bottom: 0px; 
-    margin-left: 0px; 
-    text-align: left; 
-    vertical-align: top; 
-    border-style: none; 
-    border-top-width: 0px; 
-    border-right-width: 0px; 
-    border-bottom-width: 0px; 
-    border-left-width: 0px
-}
-
-nav a:link {
-    text-decoration: none; 
-    color: #1D1D1B;
-    font-weight: 400;
-}
-    
-nav a:visited {
-    text-decoration: none;
-    color: #1D1D1B;
-}
-    
-nav a:hover {
-    text-decoration: underline;
-    color: #0098A1;
-    font-weight: 400;
-}
-
-.main a:link {
-text-decoration: underline; 
-color: #1D1D1B;
-font-weight: 400;
-
-}
-
-.main a:visited {
-text-decoration: underline;
-color: #1D1D1B;
-}
-
-.main a:hover {
-text-decoration: underline;
-color: #0098A1;
-font-weight: 400;
-}
-
-a.expandcollapse{
-text-decoration: none;
-}
-
-.expandcollapse {
-text-decoration: none;
-display: inline-block; 
-margin-left: 9px
-}
-
-ul.breadcrumb {
-margin-top: 0px;
-padding: 3px 0px;
-z-index: -1;
-background-color: white;
-margin-left: 2px;
-}
-
-ul.breadcrumb li {
-display: inline;
-font-family: IBM Plex Sans;
-font-size: 14px;
-color: #1D1D1B;
-letter-spacing: 1px;
-text-align: left;
-line-height: 20px;
-font-weight: 400;
-list-style-type: none;}
-
-ul.breadcrumb li a {
-color: #1D1D1B;
-text-decoration: none;
-}
-
-ul.breadcrumb li a:hover {
-color: #0098A1 !important;
-font-weight: 100 !important; 
-text-decoration: none;
-}
-
-.uitext {
-color: #0098A1;
-}
-
-details > summary {
-    list-style-type: none;
-}
-
-details > summary::-webkit-details-marker {
-    display: none;
-}
-
-details > summary::before {
-    content: " + ";
-    font-weight: bold; 
-    font-size: 1.5em;
-}
-
-details[open] > summary::before {
-    content: " ‒ ";
-    font-weight: bold; 
-    font-size: 1.5em;
-}
-
-details {
-    padding: 0.5rem;
-}
-
-details[open] > summary {
-    margin-bottom: 0.5rem;
-}
+/* Seperator (line) formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 hr {
-    margin-top: 5%;
-    background-color: lightgray;
-    height: 3px;
-    border-style: hidden;
-}
-
-ol > li::marker {
-    font-weight: bold;
-}
-
-.pagebreak { 
-    page-break-after: always;
-}
-
-.listheadertext {
-    font-size: 18px;
-    color: #000000;
-    letter-spacing: 2px;
-    font-weight: 700;
-    vertical-align:middle;
-    background-color: #EDF0F3;
-    padding:4px;
     margin-top: 15px;
-    text-align: left;
-}
-
-.listtext {
-    padding-left: 25px;
-    padding-top: 10px;
-    padding-right: 32px;
-    padding-bottom: 10px;
-    font-size: 14px;
-    color: #1D1D1B;
-    letter-spacing: 0;
-    line-height: 20px;
-    font-weight: 400;
-    background-color:#FFFFFF;
-    border: #EDF0F3 solid;
+    background-color: #A2A7A9;
+    height: 2px;
+    border-style: hidden;
+    max-width: 90%;
+    margin-left: 0px;
 }

@@ -1,10 +1,11 @@
 @ECHO OFF
 
-:: Request library name (used as title)
-set /p lib_name="Please enter name of your library: "
+:: Request library name 
+FOR %%a IN ("%cd%") DO set "lib_name=%%~nxa"
+echo Used library name: %lib_name%
 
 :: ------------------------------------------------------------------------------------
-:: Create general HTML documentation
+:: Create HTML documentation
 :: ------------------------------------------------------------------------------------
 
 :: Create folder for styles
@@ -16,10 +17,12 @@ copy src\_defs\html_style.css html\styles\html_style.css
 robocopy src\md\_images html\_images /E
 
 :: Copy all markdown files to temporary folder
-FOR /R "src\md" %%x in (*.md) do copy "%%x" "html\temp_md"
+FOR /R "src\md" %%x IN (*.md) DO copy "%%x" "html\temp_md"
 
 :: Merge md files to one general documentation
-TYPE html\temp_md\*.md >> src\md\Temp.md
+TYPE html\temp_md\*.md >> src\md\TTemp.md
+
+copy /b "src\md\TTemp.md" + "src\_defs\TableOfContents_Collapse.md" "src\md\Temp.md"
 
 :: Generate general html help file
 pandoc -s ^
@@ -28,45 +31,9 @@ pandoc -s ^
 	-o html\%lib_name%.html ^
     --metadata title=%lib_name%
 
-:: Delete temporary markdown file
+:: Delete temporary markdown files
 del src\md\Temp.md
-
-:: ------------------------------------------------------------------------------------
-:: Create FB/FU documentations for PLCnext Engineer help function
-:: ------------------------------------------------------------------------------------
-
-:: Copy FB/FU-realted files in POE folder
-MD html\temp_md\poe
-FOR /R "src\md\FBs_FUs" %%x in (*.md) do copy "%%x" "html\temp_md\poe"
-
-:: Concat each file with Auto_Open.md
-FOR /R "html\temp_md\poe" %%x in (*.md) do copy /b "%%x" + "src\_defs\Auto_Open.md" "html\temp_md\poe\%%~nx.md"
-
-:: Create folder for each POE
-FOR %%i in (html\temp_md\poe\*) do md "html\temp_md\poe\%%~ni" 
-
-:: Copy general markdown files to POE folders
-FOR /D %%x in ("html\temp_md\poe\*") do copy html\temp_md\*.md %%x
-del html\temp_md\*.md
-
-:: Overwrite POE-realted files in respective POE folder
-FOR %%x in (html\temp_md\poe\*) do copy "html\temp_md\poe\%%~nx.md" "html\temp_md\poe\%%~nx" 
-
-:: Merge markdown files in each POE folder
-FOR /D %%i in (html\temp_md\poe\*) do TYPE "html\temp_md\poe\%%~ni\*.md" >> html\temp_md\%%~ni.md 
-rmdir /s /q html\temp_md\poe
-
-:: Generate separate html documents via pandoc
-FOR /R "html\temp_md" %%i in (*.md) do pandoc -s ^
-	--css styles/html_style.css ^
-	-f markdown -t html "%%~fi" ^
-	-o "%%~dpni.html" ^
-    --metadata title=%lib_name%
-
-:: Move all html files to html folder
-FOR /R "html\temp_md" %%x in (*.html) do move "%%x" html
-
-:: Delete temp folders
+del src\md\TTemp.md
 rmdir /s /q html\temp_md
 
 :: ------------------------------------------------------------------------------------
@@ -88,51 +55,112 @@ robocopy src\md\_images pdf\temp\html\_images
 copy src\_defs\pdf_style.css pdf\temp\html\styles\pdf_style.css
 
 :: Copy all markdown files (except 00_Table_of_Contents.md and 01_Startpage.md) to temporary folder
-FOR /R "src\md" %%i in (*.md) do ( ^
-	if "%%~ni" neq "00_Table_Of_Contents" ( ^
-		if "%%~ni" neq "01_Startpage" ( ^
+FOR /R "src\md" %%i IN (*.md) DO ( ^
+	IF "%%~ni" neq "00_Table_Of_Contents" ( ^
+		IF "%%~ni" neq "01_Startpage" ( ^
 			copy "%%i" "pdf\temp\md" ^
 		) ^
 	) ^
 )
 
-:: Merge md files to one temporary documentation
-TYPE pdf\temp\md\*.md >> pdf\temp\Temp1.md
+:: Generate start page and table of contents
+copy /b  "src\md\01_Startpage.md" + "src\md\00_Table_Of_Contents.md" "pdf\temp\Tmp_Merge1.md"
 
-copy /b "pdf\temp\Temp1.md" + "src\_defs\Open_Details.md" "pdf\temp\Temp2.md"
+pandoc -s ^
+	--css styles\pdf_style.css ^
+	-f markdown -t html pdf\temp\Tmp_Merge1.md ^
+	-o pdf\temp\html\Temp1.html ^
+	--metadata title=%lib_name% 
+
+:: Merge md files to one temporary documentation
+TYPE pdf\temp\md\*.md >> pdf\temp\Tmp_Merge2.md
+
+copy /b  "pdf\temp\Tmp_Merge2.md" + "src\_defs\EmptyTableLines.md" "pdf\temp\TTmp_Merge2.md"
 
 :: Generate temporary html help file
 pandoc -s ^
-	--css styles\pdf_style.css ^
-	-f markdown -t html pdf\temp\Temp2.md ^
-	-o pdf\temp\html\03_Temp.html ^
-	--metadata title=%lib_name% 
+  --css styles\pdf_style.css ^
+  --number-sections ^
+  --toc-depth=2 ^
+  -f markdown -t html pdf\temp\TTmp_Merge2.md ^
+  -o pdf\temp\html\Temp2.html ^
+  --metadata title="%lib_name%"
 
-:: Generate start page 
-pandoc -s ^
-	--css styles\pdf_style.css ^
-	-f markdown -t html src\md\01_Startpage.md ^
-	-o pdf\temp\html\01_Startpage.html ^
-	--metadata title=%lib_name% 
-
-:: Generate table of contents page 
-pandoc -s ^
-	--css styles\pdf_style.css ^
-	-f markdown -t html src\md\00_Table_Of_Contents.md ^
-	-o pdf\temp\html\02_Table_Of_Contents.html ^
-	--metadata title=%lib_name% 
-
-FOR /F "tokens=*" %%G IN ('dir /b /s pdf\temp\html\*.html') DO TYPE "%%G" >> pdf\temp\html\Tmp_Merge.html 
+copy /b  "pdf\temp\html\Temp1.html" + "pdf\temp\html\Temp2.html" "pdf\temp\html\TTmp_Merge.html"
 
 wkhtmltopdf ^
-	--header-left %lib_name% ^
-	--header-right [page]/[toPage] ^
-	--header-line ^
-	--header-spacing 10 ^
-	--margin-top 20 ^
+    --header-html "file:///%CD%/src/_defs/header.html?lib_name=%lib_name%" ^
+    --enable-javascript ^
+    --javascript-delay 500 ^
+    --margin-top 30 ^
+    --header-spacing 10 ^
 	--margin-left 15 ^
 	--margin-bottom 20 ^
 	--disable-smart-shrinking ^
 	--enable-local-file-access ^
-	pdf\temp\html\Tmp_Merge.html ^
+    --disable-internal-links ^
+	pdf\temp\html\TTmp_Merge.html ^
 	pdf\%lib_name%.pdf
+
+
+::  --header-left %lib_name% ^
+::	--header-right [page]/[toPage] ^
+:: 	--header-line ^
+::  --footer-line ^
+::  --footer-spacing 10 ^
+::	--header-spacing 10 ^
+
+:: ------------------------------------------------------------------------------------
+:: Create FB related HTML files
+:: ------------------------------------------------------------------------------------
+
+setlocal enabledelayedexpansion
+
+:: Source folder
+set sourceFolder="src\md\Components"
+
+:: Target folder
+set targetFolder="html\Components"
+IF not exist "%targetFolder%" mkdir "%targetFolder%"
+
+:: Create files with HTML and JavaScript content
+FOR /R "src\md\Components" %%f IN (*.md) DO ( ^
+	IF EXIST html\Components\%%~nf.html DEL html\Components\%%~nf.html 
+	set htmlFile="html\Components\%%~nf.html"
+	echo ^<^^!DOCTYPE html^> >> "!htmlFile!" 
+    echo ^<html lang="en"^> >> "!htmlFile!" 
+	echo ^<head^> >> "!htmlFile!"
+    echo     ^<meta charset="UTF-8"^> >> "!htmlFile!"
+    echo     ^<title^>Automatic Redirect^</title^> >> "!htmlFile!"
+    echo     ^<script^> >> "!htmlFile!"
+    echo         // *** Change POU name here: >> "!htmlFile!"
+	for /f "tokens=2* delims=_" %%a in ("%%~nf") do set "pou_name=%%a_%%b"
+    echo         const pou_name = "!pou_name!"; >> "!htmlFile!"
+    echo         let dots = ""; >> "!htmlFile!"
+    echo         let dotElement; >> "!htmlFile!"
+    echo         window.onload = function^(^) ^{ >> "!htmlFile!"
+    echo             dotElement = document.getElementById^("dots"^); >> "!htmlFile!"
+    echo             let i = 0; >> "!htmlFile!"
+    echo             let dotInterval = setInterval^(function^(^) ^{ >> "!htmlFile!"
+    echo                 if ^(i ^< 3^) ^{ >> "!htmlFile!"
+    echo                     dots += "."; >> "!htmlFile!"
+    echo                     dotElement.textContent = dots; >> "!htmlFile!"
+    echo                     i++; >> "!htmlFile!"
+    echo                 ^} else ^{ >> "!htmlFile!"
+    echo                     clearInterval^(dotInterval^); >> "!htmlFile!"
+    echo                 ^} >> "!htmlFile!"
+    echo             ^}, 300^); >> "!htmlFile!"
+    echo         ^}; >> "!htmlFile!"
+    echo         setTimeout^(function^(^) ^{ >> "!htmlFile!"
+    echo             window.location.href = ^`./Overview.htm#$^{pou_name^}^`; >> "!htmlFile!"
+    echo         ^}, 1000^); >> "!htmlFile!"
+    echo     ^</script^> >> "!htmlFile!"
+    echo ^</head^> >> "!htmlFile!"
+    echo ^<body^> >> "!htmlFile!"
+    echo     ^<h1^>You will be redirected^<span id="dots"^>^</span^>^</h1^> >> "!htmlFile!"
+    echo     ^<p^>If the redirect does not work, please click ^<a href="./Overview.htm" onclick="location.href=this.href+'#'+pou_name;return false;"^>here^</a^>.^</p^> >> "!htmlFile!"
+    echo ^</body^> >> "!htmlFile!"
+    echo ^</html^> >> "!htmlFile!"
+)
+
+endlocal

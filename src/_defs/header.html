@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-size: 14px;
+      background-color: #EDF0F3;
+      font-family: 'IBM Plex Sans';
+      color: #000000;
+      padding-top: 5px;
+      padding-bottom: 3px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table td {
+        margin-left: 10px;
+    }
+  </style>
+
+  <script>
+    function substitute() {
+      var vars = {};
+      var query = window.location.search.substring(1);
+
+      query.split('&').forEach(function(param) {
+        var pair = param.split('=');
+        vars[pair[0]] = decodeURIComponent(pair[1] || '');
+      });
+
+      document.getElementById('page').textContent = vars.page || '';
+      document.getElementById('topage').textContent = vars.topage || '';
+      document.getElementById('libname').textContent = vars.lib_name || '';
+    }
+  </script>
+</head>
+
+<body onload="substitute()">
+  <table>
+    <tr>
+      <td id="libname"></td>
+      <td style="text-align: right;">
+        <span id="page"></span>/<span id="topage"></span>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+
