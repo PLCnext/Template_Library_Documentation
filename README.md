@@ -115,7 +115,7 @@ However, for **PLCnext Engineer ≥ 2024.6**, HTML help also works for restricte
 
 Follow these steps to build your documentation:
 
-1. **Prepare the template** : Copy the template folder to your PC and rename it to the name of your library.
+1. **Prepare the template** : Copy the template folder to your PC and rename it to the name of your library. Do **not** use spaces in your folder name.
 
 2. **Edit the Markdown files**: 
 
