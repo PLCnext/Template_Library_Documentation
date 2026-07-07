@@ -7,27 +7,28 @@
 
 ## CONTENTS
 
-::: {#toc .toc}
+[Startpage](#startpage)                     <!-- *** Mandatory -> Keep this chapter *** --> 
 
-1. [Startpage](#startpage)                  <!-- *** Mandatory -> Keep this chapter *** -->   
-2. [General information](#general_info)     <!-- *** Mandatory -> Keep this chapter *** -->   
-3. [Installation hints](#installation)      <!-- *** Mandatory -> Keep this chapter *** -->   
-4. [Change notes](#change_notes)            <!-- *** Mandatory -> Keep this chapter *** -->   
-5. [Naming conventions](#conventions)       <!-- *** Mandatory -> Keep this chapter *** -->   
-6. [Library components](#components)        <!-- *** Mandatory -> Keep this chapter *** -->   
-7. [LIBID_My_FU1_1](#LIBID_My_FU1_1)        <!-- *** Change or delete *** -->   
-8. [LIBID_My_FB1_1](#LIBID_My_FB1_1)        <!-- *** Change or delete *** --> 
-9. [Group 1](#Group_1)                      <!-- *** Change or delete *** --> 
+::: {#toc .toc}
+  
+1. [General information](#general_info)     <!-- *** Mandatory -> Keep this chapter *** -->   
+2. [Installation hints](#installation)      <!-- *** Mandatory -> Keep this chapter *** -->   
+3. [Change notes](#change_notes)            <!-- *** Mandatory -> Keep this chapter *** -->   
+4. [Naming conventions](#conventions)       <!-- *** Mandatory -> Keep this chapter *** -->   
+5. [Library components](#components)        <!-- *** Mandatory -> Keep this chapter *** -->   
+6. [LIBID_My_FU1_1](#LIBID_My_FU1_1)        <!-- *** Change or delete *** -->   
+7. [LIBID_My_FB1_1](#LIBID_My_FB1_1)        <!-- *** Change or delete *** --> 
+8. [Group 1](#Group_1)                      <!-- *** Change or delete *** --> 
     - [LIBID_My_FB2_1](#LIBID_My_FB2_1)     <!-- *** Change or delete *** --> 
     - [LIBID_My_FB3_1](#LIBID_My_FB3_1)     <!-- *** Change or delete *** --> 
-10. [HMI symbols](#HMI_Symbols)             <!-- *** Change or delete *** --> 
+9. [HMI symbols](#HMI_Symbols)             <!-- *** Change or delete *** --> 
     - [LIBID_SYM_Name_1](#LIBID_SYM_Name_1) <!-- *** Change or delete *** --> 
-11. [User-defined data types](#udt)         <!-- *** Mandatory if you use user-defined types in your library *** -->
-12. [Diag codes of used firmware blocks](#fw_fb_diag_codes) <!-- *** Mandatory if you use firmware blocks in your library *** -->
-13. [Third-party licenses](#licenses)       <!-- *** Mandatory if you use third-party software in your library *** -->
-14. [Known issues](#known_issues)           <!-- *** Mandatory if your library has known issues *** -->
-15. [Startup example(s)](#example)          <!-- *** Mandatory -> Keep this chapter *** -->
-16. [Support](#support)                     <!-- *** Mandatory -> Keep this chapter *** -->
+10. [User-defined data types](#udt)         <!-- *** Mandatory if you use user-defined types in your library *** -->
+11. [Diag codes of used firmware blocks](#fw_fb_diag_codes) <!-- *** Mandatory if you use firmware blocks in your library *** -->
+12. [Third-party licenses](#licenses)       <!-- *** Mandatory if you use third-party software in your library *** -->
+13. [Known issues](#known_issues)           <!-- *** Mandatory if your library has known issues *** -->
+14. [Startup example(s)](#example)          <!-- *** Mandatory -> Keep this chapter *** -->
+15. [Support](#support)                     <!-- *** Mandatory -> Keep this chapter *** -->
 
 :::
 
