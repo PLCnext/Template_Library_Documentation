@@ -196,6 +196,11 @@ nav a:link {
     line-height: 25px;
 }
 
+nav p {
+    visibility: hidden;
+    margin-top: -40px;
+}
+
 /* Base formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 H1 {
