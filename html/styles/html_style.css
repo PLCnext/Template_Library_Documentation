@@ -229,6 +229,14 @@ nav a:hover {
     padding-left: 0px;
 }
 
+nav p {
+    margin-left: 15px;
+}
+
+nav p::before {
+    content: "🏠 ";
+}
+
 /* Base formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 H1 {
